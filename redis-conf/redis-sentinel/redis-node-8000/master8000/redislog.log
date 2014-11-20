@@ -1,0 +1,171 @@
+[32464] 18 Nov 23:29:43.826 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+[32464] 18 Nov 23:29:43.826 # Redis can't set maximum open files to 10032 because of OS error: Operation not permitted.
+[32464] 18 Nov 23:29:43.826 # Current maximum open files is 1024. maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+[32464] 18 Nov 23:29:43.826 # Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemory limit with 'noeviction' policy now.
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.8 (00000000/0) 32 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6666
+ |    `-._   `._    /     _.-'    |     PID: 32464
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[32464] 18 Nov 23:29:43.827 # Server started, Redis version 2.8.8
+[32464] 18 Nov 23:29:43.827 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32464] 18 Nov 23:29:43.827 * The server is now ready to accept connections on port 6666
+[32464] 18 Nov 23:31:33.542 * Slave asks for synchronization
+[32464] 18 Nov 23:31:33.542 * Full resync requested by slave.
+[32464] 18 Nov 23:31:33.542 * Starting BGSAVE for SYNC
+[32464] 18 Nov 23:31:33.542 * Background saving started by pid 1774
+[1774] 18 Nov 23:31:33.624 * DB saved on disk
+[1774] 18 Nov 23:31:33.625 * RDB: 0 MB of memory used by copy-on-write
+[32464] 18 Nov 23:31:33.666 * Background saving terminated with success
+[32464] 18 Nov 23:31:33.666 * Synchronization with slave succeeded
+[32464] 18 Nov 23:32:47.136 * Background append only file rewriting started by pid 3317
+[3317] 18 Nov 23:32:47.190 * SYNC append only file rewrite performed
+[3317] 18 Nov 23:32:47.190 * AOF rewrite: 0 MB of memory used by copy-on-write
+[32464] 18 Nov 23:32:47.218 * Background AOF rewrite terminated with success
+[32464] 18 Nov 23:32:47.218 * Parent diff successfully flushed to the rewritten AOF (0 bytes)
+[32464] 18 Nov 23:32:47.219 * Background AOF rewrite finished successfully
+[32464] 18 Nov 23:34:21.901 # Connection with slave 127.0.0.1:7771 lost.
+[32464] 18 Nov 23:34:28.368 # User requested shutdown...
+[32464] 18 Nov 23:34:28.368 * Saving the final RDB snapshot before exiting.
+[32464] 18 Nov 23:34:28.416 * DB saved on disk
+[32464] 18 Nov 23:34:28.416 * Removing the pid file.
+[32464] 18 Nov 23:34:28.416 # Redis is now ready to exit, bye bye...
+[19667] 19 Nov 22:43:58.761 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+[19667] 19 Nov 22:43:58.761 # Redis can't set maximum open files to 10032 because of OS error: Operation not permitted.
+[19667] 19 Nov 22:43:58.761 # Current maximum open files is 1024. maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+[19667] 19 Nov 22:43:58.762 # Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemory limit with 'noeviction' policy now.
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.8 (00000000/0) 32 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 8000
+ |    `-._   `._    /     _.-'    |     PID: 19667
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[19667] 19 Nov 22:43:58.763 # Server started, Redis version 2.8.8
+[19667] 19 Nov 22:43:58.763 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[19667] 19 Nov 22:43:58.763 * DB loaded from disk: 0.000 seconds
+[19667] 19 Nov 22:43:58.763 * The server is now ready to accept connections on port 8000
+[19667] 19 Nov 22:44:25.744 * Slave asks for synchronization
+[19667] 19 Nov 22:44:25.744 * Full resync requested by slave.
+[19667] 19 Nov 22:44:25.744 * Starting BGSAVE for SYNC
+[19667] 19 Nov 22:44:25.744 * Background saving started by pid 20114
+[20114] 19 Nov 22:44:25.815 * DB saved on disk
+[20114] 19 Nov 22:44:25.815 * RDB: 0 MB of memory used by copy-on-write
+[19667] 19 Nov 22:44:25.821 * Background saving terminated with success
+[19667] 19 Nov 22:44:25.822 * Synchronization with slave succeeded
+[19667] 19 Nov 22:44:41.378 * Slave asks for synchronization
+[19667] 19 Nov 22:44:41.378 * Full resync requested by slave.
+[19667] 19 Nov 22:44:41.378 * Starting BGSAVE for SYNC
+[19667] 19 Nov 22:44:41.379 * Background saving started by pid 20382
+[20382] 19 Nov 22:44:41.467 * DB saved on disk
+[20382] 19 Nov 22:44:41.468 * RDB: 0 MB of memory used by copy-on-write
+[19667] 19 Nov 22:44:41.555 * Background saving terminated with success
+[19667] 19 Nov 22:44:41.556 * Synchronization with slave succeeded
+[19667] 19 Nov 22:49:00.722 # User requested shutdown...
+[19667] 19 Nov 22:49:00.722 * Saving the final RDB snapshot before exiting.
+[19667] 19 Nov 22:49:00.790 * DB saved on disk
+[19667] 19 Nov 22:49:00.790 * Removing the pid file.
+[19667] 19 Nov 22:49:00.790 # Redis is now ready to exit, bye bye...
+[30343] 19 Nov 22:54:59.348 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+[30343] 19 Nov 22:54:59.349 # Redis can't set maximum open files to 10032 because of OS error: Operation not permitted.
+[30343] 19 Nov 22:54:59.349 # Current maximum open files is 1024. maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+[30343] 19 Nov 22:54:59.349 # Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemory limit with 'noeviction' policy now.
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.8 (00000000/0) 32 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 8000
+ |    `-._   `._    /     _.-'    |     PID: 30343
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[30343] 19 Nov 22:54:59.349 # Server started, Redis version 2.8.8
+[30343] 19 Nov 22:54:59.349 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[30343] 19 Nov 22:54:59.350 * DB loaded from disk: 0.000 seconds
+[30343] 19 Nov 22:54:59.350 * The server is now ready to accept connections on port 8000
+[30343] 19 Nov 23:26:22.938 # User requested shutdown...
+[30343] 19 Nov 23:26:22.938 * Saving the final RDB snapshot before exiting.
+[30343] 19 Nov 23:26:22.986 * DB saved on disk
+[30343] 19 Nov 23:26:22.986 * Removing the pid file.
+[30343] 19 Nov 23:26:22.987 # Redis is now ready to exit, bye bye...
+[28260] 19 Nov 23:26:26.392 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+[28260] 19 Nov 23:26:26.393 # Redis can't set maximum open files to 10032 because of OS error: Operation not permitted.
+[28260] 19 Nov 23:26:26.393 # Current maximum open files is 1024. maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+[28260] 19 Nov 23:26:26.393 # Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemory limit with 'noeviction' policy now.
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.8 (00000000/0) 32 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 8000
+ |    `-._   `._    /     _.-'    |     PID: 28260
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[28260] 19 Nov 23:26:26.394 # Server started, Redis version 2.8.8
+[28260] 19 Nov 23:26:26.394 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[28260] 19 Nov 23:26:26.394 * DB loaded from disk: 0.000 seconds
+[28260] 19 Nov 23:26:26.394 * The server is now ready to accept connections on port 8000
+[28260] 19 Nov 23:26:49.138 * Slave asks for synchronization
+[28260] 19 Nov 23:26:49.138 * Full resync requested by slave.
+[28260] 19 Nov 23:26:49.138 * Starting BGSAVE for SYNC
+[28260] 19 Nov 23:26:49.138 * Background saving started by pid 28645
+[28645] 19 Nov 23:26:49.220 * DB saved on disk
+[28645] 19 Nov 23:26:49.221 * RDB: 0 MB of memory used by copy-on-write
+[28260] 19 Nov 23:26:49.244 * Background saving terminated with success
+[28260] 19 Nov 23:26:49.244 * Synchronization with slave succeeded
+[28260] 19 Nov 23:27:07.054 * Slave asks for synchronization
+[28260] 19 Nov 23:27:07.054 * Full resync requested by slave.
+[28260] 19 Nov 23:27:07.054 * Starting BGSAVE for SYNC
+[28260] 19 Nov 23:27:07.054 * Background saving started by pid 28946
+[28946] 19 Nov 23:27:07.130 * DB saved on disk
+[28946] 19 Nov 23:27:07.131 * RDB: 0 MB of memory used by copy-on-write
+[28260] 19 Nov 23:27:07.178 * Background saving terminated with success
+[28260] 19 Nov 23:27:07.178 * Synchronization with slave succeeded
+[28260 | signal handler] (1416411789) Received SIGTERM, scheduling shutdown...
+[28260] 19 Nov 23:43:09.392 # User requested shutdown...
+[28260] 19 Nov 23:43:09.392 * Saving the final RDB snapshot before exiting.
+[28260] 19 Nov 23:43:09.474 * DB saved on disk
+[28260] 19 Nov 23:43:09.474 * Removing the pid file.
+[28260] 19 Nov 23:43:09.474 # Redis is now ready to exit, bye bye...

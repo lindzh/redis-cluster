@@ -1,0 +1,219 @@
+[4233] 18 Nov 23:33:41.018 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+[4233] 18 Nov 23:33:41.019 # Redis can't set maximum open files to 10032 because of OS error: Operation not permitted.
+[4233] 18 Nov 23:33:41.019 # Current maximum open files is 1024. maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+[4233] 18 Nov 23:33:41.019 # Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemory limit with 'noeviction' policy now.
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.8 (00000000/0) 32 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 7772
+ |    `-._   `._    /     _.-'    |     PID: 4233
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[4233] 18 Nov 23:33:41.019 # Server started, Redis version 2.8.8
+[4233] 18 Nov 23:33:41.019 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[4233] 18 Nov 23:33:41.019 * The server is now ready to accept connections on port 7772
+[4233] 18 Nov 23:34:13.679 # User requested shutdown...
+[4233] 18 Nov 23:34:13.680 * Saving the final RDB snapshot before exiting.
+[4233] 18 Nov 23:34:13.729 * DB saved on disk
+[4233] 18 Nov 23:34:13.729 * Removing the pid file.
+[4233] 18 Nov 23:34:13.729 # Redis is now ready to exit, bye bye...
+[20315] 19 Nov 22:44:37.368 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+[20315] 19 Nov 22:44:37.369 # Redis can't set maximum open files to 10032 because of OS error: Operation not permitted.
+[20315] 19 Nov 22:44:37.369 # Current maximum open files is 1024. maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+[20315] 19 Nov 22:44:37.369 # Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemory limit with 'noeviction' policy now.
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.8 (00000000/0) 32 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 8102
+ |    `-._   `._    /     _.-'    |     PID: 20315
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[20315] 19 Nov 22:44:37.370 # Server started, Redis version 2.8.8
+[20315] 19 Nov 22:44:37.371 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[20315] 19 Nov 22:44:37.371 * DB loaded from disk: 0.000 seconds
+[20315] 19 Nov 22:44:37.371 * The server is now ready to accept connections on port 8102
+[20315] 19 Nov 22:44:41.267 * SLAVE OF 127.0.0.1:8000 enabled (user request)
+[20315] 19 Nov 22:44:41.377 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:44:41.377 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:44:41.378 * Non blocking connect for SYNC fired the event.
+[20315] 19 Nov 22:44:41.378 * Master replied to PING, replication can continue...
+[20315] 19 Nov 22:44:41.378 * Partial resynchronization not possible (no cached master)
+[20315] 19 Nov 22:44:41.379 * Full resync from master: 7a9128456e84cd5050703e07d630a99bf8fe0c82:29
+[20315] 19 Nov 22:44:41.556 * MASTER <-> SLAVE sync: receiving 66 bytes from master
+[20315] 19 Nov 22:44:41.556 * MASTER <-> SLAVE sync: Flushing old data
+[20315] 19 Nov 22:44:41.556 * MASTER <-> SLAVE sync: Loading DB in memory
+[20315] 19 Nov 22:44:41.556 * MASTER <-> SLAVE sync: Finished with success
+[20315] 19 Nov 22:49:00.791 # Connection with master lost.
+[20315] 19 Nov 22:49:00.791 * Caching the disconnected master state.
+[20315] 19 Nov 22:49:00.912 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:00.912 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:00.912 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:01.914 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:01.914 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:01.914 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:02.917 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:02.917 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:02.917 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:03.919 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:03.920 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:03.920 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:04.922 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:04.922 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:04.922 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:05.924 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:05.924 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:05.927 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:06.929 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:06.929 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:06.929 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:07.932 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:07.932 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:07.932 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:08.934 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:08.934 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:08.934 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:09.936 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:09.937 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:09.937 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:10.939 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:10.939 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:10.941 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:11.943 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:11.943 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:11.943 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:12.946 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:12.946 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:12.946 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:13.948 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:13.948 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:13.948 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:14.951 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:14.951 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:14.951 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:15.953 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:15.953 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:15.954 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:16.956 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:16.956 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:16.956 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:17.958 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:17.959 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:17.959 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:18.961 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:18.961 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:18.961 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:19.964 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:19.964 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:19.964 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:20.966 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:20.967 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:20.967 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:21.969 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:21.969 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:21.969 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:22.971 * Connecting to MASTER 127.0.0.1:8000
+[20315] 19 Nov 22:49:22.972 * MASTER <-> SLAVE sync started
+[20315] 19 Nov 22:49:22.972 # Error condition on socket for SYNC: Connection refused
+[20315] 19 Nov 22:49:23.946 # User requested shutdown...
+[20315] 19 Nov 22:49:23.946 * Saving the final RDB snapshot before exiting.
+[20315] 19 Nov 22:49:24.015 * DB saved on disk
+[20315] 19 Nov 22:49:24.015 * Removing the pid file.
+[20315] 19 Nov 22:49:24.015 # Redis is now ready to exit, bye bye...
+[28876] 19 Nov 23:27:03.041 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+[28876] 19 Nov 23:27:03.041 # Redis can't set maximum open files to 10032 because of OS error: Operation not permitted.
+[28876] 19 Nov 23:27:03.041 # Current maximum open files is 1024. maxclients has been reduced to 4064 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+[28876] 19 Nov 23:27:03.042 # Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemory limit with 'noeviction' policy now.
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.8 (00000000/0) 32 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 8102
+ |    `-._   `._    /     _.-'    |     PID: 28876
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[28876] 19 Nov 23:27:03.043 # Server started, Redis version 2.8.8
+[28876] 19 Nov 23:27:03.043 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[28876] 19 Nov 23:27:03.043 * DB loaded from disk: 0.000 seconds
+[28876] 19 Nov 23:27:03.043 * The server is now ready to accept connections on port 8102
+[28876] 19 Nov 23:27:06.643 * SLAVE OF 127.0.0.1:8000 enabled (user request)
+[28876] 19 Nov 23:27:07.053 * Connecting to MASTER 127.0.0.1:8000
+[28876] 19 Nov 23:27:07.053 * MASTER <-> SLAVE sync started
+[28876] 19 Nov 23:27:07.053 * Non blocking connect for SYNC fired the event.
+[28876] 19 Nov 23:27:07.053 * Master replied to PING, replication can continue...
+[28876] 19 Nov 23:27:07.053 * Partial resynchronization not possible (no cached master)
+[28876] 19 Nov 23:27:07.054 * Full resync from master: 5476bc17c32e91609c1fc66c09e03be338d71723:29
+[28876] 19 Nov 23:27:07.178 * MASTER <-> SLAVE sync: receiving 66 bytes from master
+[28876] 19 Nov 23:27:07.178 * MASTER <-> SLAVE sync: Flushing old data
+[28876] 19 Nov 23:27:07.178 * MASTER <-> SLAVE sync: Loading DB in memory
+[28876] 19 Nov 23:27:07.178 * MASTER <-> SLAVE sync: Finished with success
+[28876] 19 Nov 23:43:09.475 # Connection with master lost.
+[28876] 19 Nov 23:43:09.475 * Caching the disconnected master state.
+[28876] 19 Nov 23:43:09.988 * Connecting to MASTER 127.0.0.1:8000
+[28876] 19 Nov 23:43:09.988 * MASTER <-> SLAVE sync started
+[28876] 19 Nov 23:43:09.988 # Error condition on socket for SYNC: Connection refused
+[28876] 19 Nov 23:43:10.991 * Connecting to MASTER 127.0.0.1:8000
+[28876] 19 Nov 23:43:10.991 * MASTER <-> SLAVE sync started
+[28876] 19 Nov 23:43:10.991 # Error condition on socket for SYNC: Connection refused
+[28876] 19 Nov 23:43:11.993 * Connecting to MASTER 127.0.0.1:8000
+[28876] 19 Nov 23:43:11.994 * MASTER <-> SLAVE sync started
+[28876] 19 Nov 23:43:11.994 # Error condition on socket for SYNC: Connection refused
+[28876] 19 Nov 23:43:12.995 * Connecting to MASTER 127.0.0.1:8000
+[28876] 19 Nov 23:43:12.995 * MASTER <-> SLAVE sync started
+[28876] 19 Nov 23:43:12.995 # Error condition on socket for SYNC: Connection refused
+[28876] 19 Nov 23:43:13.999 * Connecting to MASTER 127.0.0.1:8000
+[28876] 19 Nov 23:43:13.999 * MASTER <-> SLAVE sync started
+[28876] 19 Nov 23:43:13.999 # Error condition on socket for SYNC: Connection refused
+[28876] 19 Nov 23:43:15.001 * Connecting to MASTER 127.0.0.1:8000
+[28876] 19 Nov 23:43:15.001 * MASTER <-> SLAVE sync started
+[28876] 19 Nov 23:43:15.001 # Error condition on socket for SYNC: Connection refused
+[28876] 19 Nov 23:43:15.789 * Discarding previously cached master state.
+[28876] 19 Nov 23:43:15.789 * SLAVE OF 127.0.0.1:8101 enabled (user request)
+[28876] 19 Nov 23:43:15.790 # CONFIG REWRITE executed with success.
+[28876] 19 Nov 23:43:16.003 * Connecting to MASTER 127.0.0.1:8101
+[28876] 19 Nov 23:43:16.003 * MASTER <-> SLAVE sync started
+[28876] 19 Nov 23:43:16.003 * Non blocking connect for SYNC fired the event.
+[28876] 19 Nov 23:43:16.003 * Master replied to PING, replication can continue...
+[28876] 19 Nov 23:43:16.004 * Partial resynchronization not possible (no cached master)
+[28876] 19 Nov 23:43:16.004 * Full resync from master: 109104fdd7a3ad9ce9264a0f5f1dbe9c6d0d4a96:1
+[28876] 19 Nov 23:43:16.096 * MASTER <-> SLAVE sync: receiving 66 bytes from master
+[28876] 19 Nov 23:43:16.096 * MASTER <-> SLAVE sync: Flushing old data
+[28876] 19 Nov 23:43:16.096 * MASTER <-> SLAVE sync: Loading DB in memory
+[28876] 19 Nov 23:43:16.096 * MASTER <-> SLAVE sync: Finished with success
+[28876 | signal handler] (1416412253) Received SIGTERM, scheduling shutdown...
+[28876] 19 Nov 23:50:53.378 # User requested shutdown...
+[28876] 19 Nov 23:50:53.378 * Saving the final RDB snapshot before exiting.
+[28876] 19 Nov 23:50:53.563 * DB saved on disk
+[28876] 19 Nov 23:50:53.563 * Removing the pid file.
+[28876] 19 Nov 23:50:53.563 # Redis is now ready to exit, bye bye...
