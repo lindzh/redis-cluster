@@ -22,6 +22,8 @@
 			"zkPassword":"123456",
 			"productName":"cms-redis",
 			"redisFailOverPaxos":2,
+			"pingInterval":5000,
+			"infoInterval":5000,
 			"clusters":[
 				{
 					"clusterName":"node-redis-1",
