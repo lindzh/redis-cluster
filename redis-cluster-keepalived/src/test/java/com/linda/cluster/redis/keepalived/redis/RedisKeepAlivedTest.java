@@ -7,7 +7,7 @@ public class RedisKeepAlivedTest {
 	public static void main(String[] args) {
 		final RedisKeepAlived alived = new RedisKeepAlived();
 		alived.setPingInterval(5000);
-		alived.setRedisHost(new HostAndPort("test","127.0.0.1",6379));
+		alived.setRedisHost(new HostAndPort("test","127.0.0.1",6379, false));
 		alived.addRedisListener(new RedisAlivedListener(){
 			@Override
 			public void onConnected(RedisAliveBase redis) {
