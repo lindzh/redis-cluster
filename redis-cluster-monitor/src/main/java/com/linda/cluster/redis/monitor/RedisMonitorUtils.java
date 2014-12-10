@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -12,8 +13,13 @@ import com.linda.cluster.redis.common.utils.IntrospectorUtils;
 import com.linda.cluster.redis.common.utils.KeyValueUtils;
 import com.linda.cluster.redis.monitor.pojo.MonitorClients;
 import com.linda.cluster.redis.monitor.pojo.MonitorCpu;
+import com.linda.cluster.redis.monitor.pojo.MonitorKeyspace;
 import com.linda.cluster.redis.monitor.pojo.MonitorMemory;
+import com.linda.cluster.redis.monitor.pojo.MonitorPersitence;
+import com.linda.cluster.redis.monitor.pojo.MonitorReplication;
 import com.linda.cluster.redis.monitor.pojo.MonitorServer;
+import com.linda.cluster.redis.monitor.pojo.MonitorSlaveBean;
+import com.linda.cluster.redis.monitor.pojo.MonitorStat;
 
 public class RedisMonitorUtils {
 	
@@ -107,5 +113,71 @@ public class RedisMonitorUtils {
 	public static MonitorCpu toCpuBean(List<KeyValueBean> keyvalues){
 		Properties properties = RedisMonitorUtils.toProperties(keyvalues);
 		return IntrospectorUtils.getInstance(MonitorCpu.class, properties);
+	}
+	
+	public static MonitorStat toStatBean(List<KeyValueBean> keyvalues){
+		Properties properties = RedisMonitorUtils.toProperties(keyvalues);
+		return IntrospectorUtils.getInstance(MonitorStat.class, properties);
+	}
+	
+	public static MonitorPersitence toPersistenceBean(List<KeyValueBean> keyvalues){
+		Properties properties = RedisMonitorUtils.toProperties(keyvalues);
+		return IntrospectorUtils.getInstance(MonitorPersitence.class, properties);
+	}
+	
+	public static MonitorReplication toReplicationBean(List<KeyValueBean> keyvalues){
+		Properties properties = RedisMonitorUtils.toProperties(keyvalues);
+		MonitorReplication replication = IntrospectorUtils.getInstance(MonitorReplication.class, properties);
+		RedisMonitorUtils.setSlaves(replication, properties);
+		return replication;
+	}
+	
+	private static void setSlaves(MonitorReplication replication,Properties properties){
+		replication.setSlaves(new ArrayList<MonitorSlaveBean>());
+		int slaves = replication.getConnected_slaves();
+		int i=0;
+		while(i<slaves){
+			String slave = properties.getProperty("slave"+i);
+			if(slave!=null){
+				List<KeyValueBean> list = KeyValueUtils.toKeyValue(slave, "=", ",");
+				if(list!=null&&list.size()>0){
+					Properties slaveProperties = RedisMonitorUtils.toProperties(list);
+					MonitorSlaveBean bean = IntrospectorUtils.getInstance(MonitorSlaveBean.class, slaveProperties);
+					replication.addSlave(bean);
+				}
+			}
+			i++;
+		}
+	}
+	
+	private static int getDatabaseId(String name){
+		if(name.length()>2){
+			String dbId = name.substring(2);
+			if(dbId!=null){
+				return Integer.parseInt(dbId);
+			}
+		}
+		return -1;
+	}
+	
+	public static List<MonitorKeyspace> toKeySpace(List<KeyValueBean> keyvalues){
+		List<MonitorKeyspace> list = new ArrayList<MonitorKeyspace>();
+		if(keyvalues!=null&&keyvalues.size()>0){
+			for(KeyValueBean kv:keyvalues){
+				String db = kv.getKey();
+				String va = kv.getValue();
+				int databaseId = RedisMonitorUtils.getDatabaseId(db);
+				if(databaseId>=0){
+					List<KeyValueBean> values = KeyValueUtils.toKeyValue(va, "=", ",");
+					if(values!=null&&values.size()>0){
+						Properties properties = RedisMonitorUtils.toProperties(values);
+						MonitorKeyspace instance = IntrospectorUtils.getInstance(MonitorKeyspace.class, properties);
+						instance.setDatabaseId(databaseId);
+						list.add(instance);
+					}
+				}
+			}
+		}
+		return list;
 	}
 }
