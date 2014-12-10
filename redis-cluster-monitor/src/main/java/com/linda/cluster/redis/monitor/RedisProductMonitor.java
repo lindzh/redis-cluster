@@ -14,6 +14,7 @@ import redis.clients.jedis.Jedis;
 import com.linda.cluster.redis.monitor.pojo.Cluster;
 import com.linda.cluster.redis.monitor.pojo.Product;
 import com.linda.cluster.redis.monitor.pojo.RedisNode;
+import com.linda.cluster.redis.monitor.service.RedisClusterAdminService;
 import com.linda.cluster.redis.monitor.service.RedisInfoDataService;
 
 public class RedisProductMonitor extends Thread{
@@ -26,15 +27,18 @@ public class RedisProductMonitor extends Thread{
 	
 	private RedisInfoDataService redisInfoDataService;
 	
+	private RedisClusterAdminService redisClusterAdminService;
+	
 	private Map<RedisNode,Jedis> connectionMap =  new HashMap<RedisNode,Jedis>();
 	
 	private Map<RedisNode,Cluster> nodeClusterMap =  new HashMap<RedisNode,Cluster>();
 	
 	private Logger logger = Logger.getLogger(RedisProductMonitor.class);
 	
-	public RedisProductMonitor(Product product,RedisInfoDataService redisInfoDataService){
+	public RedisProductMonitor(Product product,RedisInfoDataService redisInfoDataService,RedisClusterAdminService redisClusterAdminService){
 		this.product = product;
 		this.redisInfoDataService = redisInfoDataService;
+		this.redisClusterAdminService = redisClusterAdminService;
 		List<Cluster> clusters = product.getClusters();
 		if(clusters!=null){
 			for(Cluster cluster:clusters){
@@ -115,6 +119,13 @@ public class RedisProductMonitor extends Thread{
 			logger.error("connection lost:"+jedis.getClient().getHost()+":"+jedis.getClient().getPort());
 			if(count<5){
 				this.handleJedisConnectionLoss(product,node,jedis, count+1);
+			}else{
+				RedisNode node2 = redisClusterAdminService.getNodeById(node.getId());
+				if(node2==null){
+					logger.error("redis node:"+jedis.getClient().getHost()+":"+jedis.getClient().getPort()+" has been delete");
+					nodeClusterMap.remove(node);
+					connectionMap.remove(node);
+				}
 			}
 		}
 	}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linda.cluster.redis.monitor.dao.MonitorReplicationDao">
+
+	<insert id="add" parameterType="monitorReplication">
+		insert into redis_monitor_replication(productId,clusterId,redisNodeId,addtime,role,connected_slaves,slaveJson,master_repl_offset,repl_backlog_active,repl_backlog_size,
+		repl_backlog_first_byte_offset,repl_backlog_histlen)
+		values(#{productId},#{clusterId},#{redisNodeId},#{addtime},#{role},#{connected_slaves},#{slaveJson},#{master_repl_offset},#{repl_backlog_active},#{repl_backlog_size},
+		#{repl_backlog_first_byte_offset},#{repl_backlog_histlen})
+	</insert>
+	
+	<select id="getByProductAndTime" resultType="monitorReplication">
+		select * from redis_monitor_replication where productId=#{productId} and addtime&gt;#{start} and addtime&lt;#{end} order by addtime asc limit #{limit} offset #{offset}
+	</select>
+	
+	<select id="getCountByProductAndTime" resultType="int">
+		select count(*) from redis_monitor_replication where productId=#{productId} and addtime&gt;#{start} and addtime&lt;#{end}
+	</select>
+	
+	<select id="getByClusterAndTime" resultType="monitorReplication">
+		select * from redis_monitor_replication where clusterId=#{clusterId} and addtime&gt;#{start} and addtime&lt;#{end} order by addtime asc limit #{limit} offset #{offset}
+	</select>
+	
+	<select id="getCountByClusterAndTime" resultType="int">
+		select count(*) from redis_monitor_replication where clusterId=#{clusterId} and addtime&gt;#{start} and addtime&lt;#{end}
+	</select>
+	
+	<select id="getByNodeAndTime" resultType="monitorReplication">
+		select * from redis_monitor_replication where nodeId=#{nodeId} and addtime&gt;#{start} and addtime&lt;#{end} order by addtime asc limit #{limit} offset #{offset}
+	</select>
+	
+	<select id="getCountByNodeAndTime" resultType="int">
+		select count(*) from redis_monitor_replication where nodeId=#{nodeId} and addtime&gt;#{start} and addtime&lt;#{end}
+	</select>
+	
+</mapper> 

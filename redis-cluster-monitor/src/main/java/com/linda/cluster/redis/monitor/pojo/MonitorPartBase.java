@@ -11,10 +11,10 @@ public abstract class MonitorPartBase {
 	//节点ID
 	private long redisNodeId;
 	
-	private long time;
+	private long addtime;
 	
 	public MonitorPartBase(){
-		this.time = System.currentTimeMillis();
+		this.addtime = System.currentTimeMillis();
 	}
 	
 }

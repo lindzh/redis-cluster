@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linda.cluster.redis.monitor.dao.MonitorStatDao">
+
+	<insert id="add" parameterType="monitorStat">
+		insert into redis_monitor_stat(productId,clusterId,redisNodeId,addtime,total_connections_received,total_commands_processed,instantaneous_ops_per_sec,rejected_connections,
+		sync_full,sync_partial_ok,sync_partial_err,expired_keys,evicted_keys,keyspace_hits,keyspace_misses,pubsub_channels,pubsub_patterns,latest_fork_usec)
+		values(#{productId},#{clusterId},#{redisNodeId},#{addtime},#{total_connections_received},#{total_commands_processed},#{instantaneous_ops_per_sec},#{rejected_connections},
+		#{sync_full},#{sync_partial_ok},#{sync_partial_err},#{expired_keys},#{evicted_keys},#{keyspace_hits},#{keyspace_misses},#{pubsub_channels},#{pubsub_patterns},#{latest_fork_usec})
+	</insert>
+	
+	<select id="getByProductAndTime" resultType="monitorStat">
+		select * from redis_monitor_stat where productId=#{productId} and addtime&gt;#{start} and addtime&lt;#{end} order by addtime asc limit #{limit} offset #{offset}
+	</select>
+	
+	<select id="getCountByProductAndTime" resultType="int">
+		select count(*) from redis_monitor_stat where productId=#{productId} and addtime&gt;#{start} and addtime&lt;#{end}
+	</select>
+	
+	<select id="getByClusterAndTime" resultType="monitorStat">
+		select * from redis_monitor_stat where clusterId=#{clusterId} and addtime&gt;#{start} and addtime&lt;#{end} order by addtime asc limit #{limit} offset #{offset}
+	</select>
+	
+	<select id="getCountByClusterAndTime" resultType="int">
+		select count(*) from redis_monitor_stat where clusterId=#{clusterId} and addtime&gt;#{start} and addtime&lt;#{end}
+	</select>
+	
+	<select id="getByNodeAndTime" resultType="monitorStat">
+		select * from redis_monitor_stat where nodeId=#{nodeId} and addtime&gt;#{start} and addtime&lt;#{end} order by addtime asc limit #{limit} offset #{offset}
+	</select>
+	
+	<select id="getCountByNodeAndTime" resultType="int">
+		select count(*) from redis_monitor_stat where nodeId=#{nodeId} and addtime&gt;#{start} and addtime&lt;#{end}
+	</select>
+	
+</mapper> 

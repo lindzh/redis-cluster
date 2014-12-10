@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<typeAliases>
+    <typeAlias alias="cluster" type="com.linda.cluster.redis.monitor.pojo.Cluster"/>
+    <typeAlias alias="product" type="com.linda.cluster.redis.monitor.pojo.Product"/>
+	<typeAlias alias="redisNode" type="com.linda.cluster.redis.monitor.pojo.RedisNode"/>
+	
+    <typeAlias alias="monitorClients" type="com.linda.cluster.redis.monitor.pojo.MonitorClients"/>
+	<typeAlias alias="monitorCpu" type="com.linda.cluster.redis.monitor.pojo.MonitorCpu"/>
+	<typeAlias alias="monitorKeyspace" type="com.linda.cluster.redis.monitor.pojo.MonitorKeyspace"/>
+	<typeAlias alias="monitorMemory" type="com.linda.cluster.redis.monitor.pojo.MonitorMemory"/>
+	<typeAlias alias="monitorPersistence" type="com.linda.cluster.redis.monitor.pojo.MonitorPersistence"/>
+	<typeAlias alias="monitorReplication" type="com.linda.cluster.redis.monitor.pojo.MonitorReplication"/>
+	<typeAlias alias="monitorServer" type="com.linda.cluster.redis.monitor.pojo.MonitorServer"/>
+	<typeAlias alias="monitorStat" type="com.linda.cluster.redis.monitor.pojo.monitorStat"/>
+
+</typeAliases>
+
+<mappers>
+	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/ClusterDaoSqlmap.xml"/>
+	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/ProductDaoSqlmap.xml"/>
+	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/RedisNodeDaoSqlmap.xml"/>
+	
+	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorClientsDaoSqlmap.xml"/>
+	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorCpuDaoSqlmap.xml"/>
+	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorKeyspaceDaoSqlmap.xml"/>
+	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorMemoryDaoSqlmap.xml"/>
+	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorPersistenceDaoSqlmap.xml"/>
+	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorReplicationDaoSqlmap.xml"/>
+	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorServerDaoSqlmap.xml"/>
+	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorStatDaoSqlmap.xml"/>
+</mappers>
+</configuration>

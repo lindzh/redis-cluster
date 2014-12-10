@@ -2,6 +2,8 @@ package com.linda.cluster.redis.monitor.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.linda.cluster.redis.monitor.pojo.RedisNode;
 
 public interface RedisNodeDao {
@@ -10,7 +12,7 @@ public interface RedisNodeDao {
 	
 	public RedisNode getById(long id);
 	
-	public List<RedisNode> getByClusterId(long productId,long clusterId);
+	public List<RedisNode> getByClusterId(@Param("productId")long productId,@Param("clusterId")long clusterId);
 	
 	public List<RedisNode> getByProductId(long productId);
 	

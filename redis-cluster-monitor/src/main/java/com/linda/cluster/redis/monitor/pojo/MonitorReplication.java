@@ -15,6 +15,8 @@ public class MonitorReplication extends MonitorPartBase {
 	
 	private List<MonitorSlaveBean> slaves;
 	
+	private String slaveJson;
+	
 	private long master_repl_offset;
 	
 	private int repl_backlog_active;
@@ -28,6 +30,5 @@ public class MonitorReplication extends MonitorPartBase {
 	public void addSlave(MonitorSlaveBean slave){
 		slaves.add(slave);
 	}
-	
 	
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linda.cluster.redis.monitor.dao.MonitorClientsDao">
+
+	<insert id="add" parameterType="monitorClients">
+		insert into redis_monitor_clients(productId,clusterId,redisNodeId,addtime,connected_clients,client_longest_output_list,client_biggest_input_buf,blocked_clients)
+		values(#{productId},#{clusterId},#{redisNodeId},#{addtime},#{connected_clients},#{client_longest_output_list},#{client_biggest_input_buf},#{blocked_clients})
+	</insert>
+	
+	<select id="getByProductAndTime" resultType="monitorClients">
+		select * from redis_monitor_clients where productId=#{productId} and addtime&gt;#{start} and addtime&lt;#{end} order by addtime asc limit #{limit} offset #{offset}
+	</select>
+	
+	<select id="getCountByProductAndTime" resultType="int">
+		select count(*) from redis_monitor_clients where productId=#{productId} and addtime&gt;#{start} and addtime&lt;#{end}
+	</select>
+	
+	<select id="getByClusterAndTime" resultType="monitorClients">
+		select * from redis_monitor_clients where clusterId=#{clusterId} and addtime&gt;#{start} and addtime&lt;#{end} order by addtime asc limit #{limit} offset #{offset}
+	</select>
+	
+	<select id="getCountByClusterAndTime" resultType="int">
+		select count(*) from redis_monitor_clients where clusterId=#{clusterId} and addtime&gt;#{start} and addtime&lt;#{end}
+	</select>
+	
+	<select id="getByNodeAndTime" resultType="monitorClients">
+		select * from redis_monitor_clients where nodeId=#{nodeId} and addtime&gt;#{start} and addtime&lt;#{end} order by addtime asc limit #{limit} offset #{offset}
+	</select>
+	
+	<select id="getCountByNodeAndTime" resultType="int">
+		select count(*) from redis_monitor_clients where nodeId=#{nodeId} and addtime&gt;#{start} and addtime&lt;#{end}
+	</select>
+	
+</mapper> 

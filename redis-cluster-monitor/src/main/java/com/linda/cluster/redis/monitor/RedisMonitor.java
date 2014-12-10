@@ -51,7 +51,7 @@ public class RedisMonitor {
 		if(products!=null&&products.size()>0){
 			logger.info("monitor start "+products.size()+" threads to monitor "+products.size()+" product");
 			for(Product pdt:products){
-				RedisProductMonitor monitor = new RedisProductMonitor(pdt,infoDataService);
+				RedisProductMonitor monitor = new RedisProductMonitor(pdt,infoDataService,redisClusterAdminService);
 				productMonitorMap.put(pdt, monitor);
 				monitor.startMonitor();
 			}
@@ -70,7 +70,7 @@ public class RedisMonitor {
 	public void restartProductMonitor(long productId){
 		this.stopProductMonitor(productId);
 		Product product = redisClusterAdminService.getProduct(productId, true);
-		RedisProductMonitor monitor = new RedisProductMonitor(product,infoDataService);
+		RedisProductMonitor monitor = new RedisProductMonitor(product,infoDataService,redisClusterAdminService);
 		productMonitorMap.put(product, monitor);
 		monitor.startMonitor();
 	}

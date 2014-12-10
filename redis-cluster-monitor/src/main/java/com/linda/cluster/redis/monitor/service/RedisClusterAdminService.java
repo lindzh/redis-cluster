@@ -82,7 +82,7 @@ public class RedisClusterAdminService {
 		return cluster;
 	}
 	
-	public RedisNode getById(long id){
+	public RedisNode getNodeById(long id){
 		return redisNodeDao.getById(id);
 	}
 	
