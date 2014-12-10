@@ -1,4 +1,4 @@
-package com.linda.cluster.redis.monitor;
+package com.linda.cluster.redis.monitor.utils;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -11,6 +11,7 @@ import java.util.Properties;
 import com.linda.cluster.redis.common.bean.KeyValueBean;
 import com.linda.cluster.redis.common.utils.IntrospectorUtils;
 import com.linda.cluster.redis.common.utils.KeyValueUtils;
+import com.linda.cluster.redis.monitor.RedisMonitorBean;
 import com.linda.cluster.redis.monitor.pojo.Cluster;
 import com.linda.cluster.redis.monitor.pojo.MonitorClients;
 import com.linda.cluster.redis.monitor.pojo.MonitorCpu;

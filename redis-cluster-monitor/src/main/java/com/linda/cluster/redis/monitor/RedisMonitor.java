@@ -1,50 +1,87 @@
 package com.linda.cluster.redis.monitor;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-import com.linda.cluster.redis.common.utils.JSONUtils;
-import com.linda.cluster.redis.monitor.pojo.MonitorClients;
-import com.linda.cluster.redis.monitor.pojo.MonitorCpu;
-import com.linda.cluster.redis.monitor.pojo.MonitorKeyspace;
-import com.linda.cluster.redis.monitor.pojo.MonitorMemory;
-import com.linda.cluster.redis.monitor.pojo.MonitorPersitence;
-import com.linda.cluster.redis.monitor.pojo.MonitorReplication;
-import com.linda.cluster.redis.monitor.pojo.MonitorServer;
-import com.linda.cluster.redis.monitor.pojo.MonitorStat;
+import lombok.Data;
 
-import redis.clients.jedis.HostAndPort;
+import org.apache.log4j.Logger;
+
 import redis.clients.jedis.Jedis;
 
+import com.linda.cluster.redis.monitor.pojo.Cluster;
+import com.linda.cluster.redis.monitor.pojo.Product;
+import com.linda.cluster.redis.monitor.pojo.RedisNode;
+import com.linda.cluster.redis.monitor.service.RedisClusterAdminService;
+import com.linda.cluster.redis.monitor.service.RedisInfoDataService;
+
+@Data
 public class RedisMonitor {
 	
-	@SuppressWarnings("resource")
-	public static void main(String[] args) throws InterruptedException {
-		
-		HostAndPort redisHostAndPort = new HostAndPort("yixin12.server.163.org", 22121);
-		Jedis jedis = new Jedis(redisHostAndPort.getHost(),redisHostAndPort.getPort());
-		jedis.connect();
+	private RedisInfoDataService infoDataService;
+	
+	private RedisClusterAdminService redisClusterAdminService;
+	
+	private Logger logger = Logger.getLogger(RedisMonitor.class);
+	
+	private ConcurrentHashMap<Product, RedisProductMonitor> productMonitorMap = new ConcurrentHashMap<Product, RedisProductMonitor>();
+	
+	private Product getProduct(long id){
+		Set<Product> products = productMonitorMap.keySet();
+		for(Product product:products){
+			if(product.getId()==id){
+				return product;
+			}
+		}
+		return null;
+	}
+	
+	public void infoNode(Jedis jedis,Product product,Cluster cluster,RedisNode node){
 		String info = jedis.info();
-		System.out.println(info);
-		System.out.println();
-		System.out.println();
-		RedisMonitorBean bean = RedisMonitorUtils.toInfoMonitorBean(info);
-		MonitorServer server = RedisMonitorUtils.toServerBean(bean.getServerProperties());
-		MonitorClients client = RedisMonitorUtils.toClientsBean(bean.getClientProperties());
-		MonitorCpu cpu = RedisMonitorUtils.toCpuBean(bean.getCpuProperties());
-		MonitorMemory memory = RedisMonitorUtils.toMemoryBean(bean.getMemoryProperties());
-		List<MonitorKeyspace> keySpace = RedisMonitorUtils.toKeySpace(bean.getKeyspaceProperties());
-		MonitorPersitence persitence = RedisMonitorUtils.toPersistenceBean(bean.getPersistentProperties());
-		MonitorReplication replication = RedisMonitorUtils.toReplicationBean(bean.getReplicationProperties());
-		MonitorStat stat = RedisMonitorUtils.toStatBean(bean.getStatProperties());		
-		
-		System.out.println(JSONUtils.toJson(server));
-		System.out.println(JSONUtils.toJson(client));
-		System.out.println(JSONUtils.toJson(cpu));
-		System.out.println(JSONUtils.toJson(memory));
-		System.out.println(JSONUtils.toJson(keySpace));
-		System.out.println(JSONUtils.toJson(persitence));
-		System.out.println(JSONUtils.toJson(replication));
-		System.out.println(JSONUtils.toJson(stat));
-		jedis.close();
+		if(info!=null){
+			RedisMonitorInfoBean bean = infoDataService.toInfoBean(product, cluster, node, info);
+			infoDataService.alarmAndSaveInfo(bean);
+		}
+	}
+	
+	public void startMonitor(){
+		List<Product> products = redisClusterAdminService.getAllProducts(true);
+		if(products!=null&&products.size()>0){
+			logger.info("monitor start "+products.size()+" threads to monitor "+products.size()+" product");
+			for(Product pdt:products){
+				RedisProductMonitor monitor = new RedisProductMonitor(pdt,infoDataService);
+				productMonitorMap.put(pdt, monitor);
+				monitor.startMonitor();
+			}
+		}else{
+			logger.info("monitor no product has in database");
+		}
+	}
+	
+	public void stopMonitor(){
+		Collection<RedisProductMonitor> monitors = productMonitorMap.values();
+		for(RedisProductMonitor monitor:monitors){
+			monitor.stopMonitor();
+		}
+	}
+	
+	public void restartProductMonitor(long productId){
+		this.stopProductMonitor(productId);
+		Product product = redisClusterAdminService.getProduct(productId, true);
+		RedisProductMonitor monitor = new RedisProductMonitor(product,infoDataService);
+		productMonitorMap.put(product, monitor);
+		monitor.startMonitor();
+	}
+	
+	public void stopProductMonitor(long productId){
+		Product product = this.getProduct(productId);
+		if(product!=null){
+			RedisProductMonitor monitor = productMonitorMap.get(product);
+			monitor.stopMonitor();
+			monitor.interrupt();
+			productMonitorMap.remove(product);
+		}
 	}
 }

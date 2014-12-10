@@ -7,7 +7,6 @@ import com.linda.cluster.redis.monitor.pojo.Cluster;
 import com.linda.cluster.redis.monitor.pojo.Product;
 import com.linda.cluster.redis.monitor.pojo.RedisNode;
 import com.linda.cluster.redis.monitor.service.RedisInfoDataService;
-import com.linda.cluster.redis.monitor.service.RedisNodeMonitor;
 
 public class RedisNodeMonitorTest {
 	
@@ -39,9 +38,9 @@ public class RedisNodeMonitorTest {
 		
 		HostAndPort redisHostAndPort = new HostAndPort(host, port);
 		Jedis jedis = new Jedis(redisHostAndPort.getHost(),redisHostAndPort.getPort());
-		jedis.connect();
+		//jedis.connect();
 		
-		RedisNodeMonitor monitor = new RedisNodeMonitor();
+		RedisMonitor monitor = new RedisMonitor();
 		monitor.setInfoDataService(new RedisInfoDataService());
 		
 		monitor.infoNode(jedis, product, cluster, node);
