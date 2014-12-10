@@ -3,15 +3,9 @@ package com.linda.cluster.redis.monitor.pojo;
 import lombok.Data;
 
 @Data
-public class MonitorServer {
+public class MonitorServer extends MonitorPartBase{
 	
 	private long id;
-	//产品ID
-	private long productId;
-	//集群ID
-	private long clusterId;
-	//节点ID
-	private long redisNodeId;
 	//redis版本
 	private String redis_version;
 	

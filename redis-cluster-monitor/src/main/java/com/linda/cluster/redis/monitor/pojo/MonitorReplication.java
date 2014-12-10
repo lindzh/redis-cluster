@@ -5,15 +5,9 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class MonitorReplication {
+public class MonitorReplication extends MonitorPartBase {
 	
 	private long id;
-	//产品ID
-	private long productId;
-	//集群ID
-	private long clusterId;
-	//节点ID
-	private long redisNodeId;
 	
 	private String role;
 	

@@ -11,15 +11,19 @@ import java.util.Properties;
 import com.linda.cluster.redis.common.bean.KeyValueBean;
 import com.linda.cluster.redis.common.utils.IntrospectorUtils;
 import com.linda.cluster.redis.common.utils.KeyValueUtils;
+import com.linda.cluster.redis.monitor.pojo.Cluster;
 import com.linda.cluster.redis.monitor.pojo.MonitorClients;
 import com.linda.cluster.redis.monitor.pojo.MonitorCpu;
 import com.linda.cluster.redis.monitor.pojo.MonitorKeyspace;
 import com.linda.cluster.redis.monitor.pojo.MonitorMemory;
+import com.linda.cluster.redis.monitor.pojo.MonitorPartBase;
 import com.linda.cluster.redis.monitor.pojo.MonitorPersitence;
 import com.linda.cluster.redis.monitor.pojo.MonitorReplication;
 import com.linda.cluster.redis.monitor.pojo.MonitorServer;
 import com.linda.cluster.redis.monitor.pojo.MonitorSlaveBean;
 import com.linda.cluster.redis.monitor.pojo.MonitorStat;
+import com.linda.cluster.redis.monitor.pojo.Product;
+import com.linda.cluster.redis.monitor.pojo.RedisNode;
 
 public class RedisMonitorUtils {
 	
@@ -82,6 +86,24 @@ public class RedisMonitorUtils {
 			e.printStackTrace();
 		}
 		return monitorBean;
+	}
+	
+	public static void setProductClusterNode(Product product,Cluster cluster,RedisNode node,MonitorPartBase monitorPart){
+		if(product!=null){
+			monitorPart.setProductId(product.getId());	
+		}
+		if(cluster!=null){
+			monitorPart.setClusterId(cluster.getId());
+		}
+		if(node!=null){
+			monitorPart.setRedisNodeId(node.getId());
+		}
+	}
+	
+	public static void setProductClusterNodes(Product product,Cluster cluster,RedisNode node,List<? extends MonitorPartBase> monitorParts){
+		for(MonitorPartBase part:monitorParts){
+			RedisMonitorUtils.setProductClusterNode(product, cluster, node, part);
+		}
 	}
 	
 	public static Properties toProperties(List<KeyValueBean> keyvalues){

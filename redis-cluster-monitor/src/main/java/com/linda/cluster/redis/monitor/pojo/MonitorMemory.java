@@ -3,14 +3,8 @@ package com.linda.cluster.redis.monitor.pojo;
 import lombok.Data;
 
 @Data
-public class MonitorMemory {
+public class MonitorMemory extends MonitorPartBase {
 	private long id;
-	//产品ID
-	private long productId;
-	//集群ID
-	private long clusterId;
-	//节点ID
-	private long redisNodeId;
 	//已使用内存数量 B
 	private long used_memory;
 	//分配内存(top 占用内存)

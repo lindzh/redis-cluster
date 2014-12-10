@@ -3,15 +3,9 @@ package com.linda.cluster.redis.monitor.pojo;
 import lombok.Data;
 
 @Data
-public class MonitorKeyspace {
+public class MonitorKeyspace extends MonitorPartBase {
 	
 	private long id;
-	//产品ID
-	private long productId;
-	//集群ID
-	private long clusterId;
-	//节点ID
-	private long redisNodeId;
 	
 	private int databaseId;
 	
