@@ -9,7 +9,7 @@ import com.linda.cluster.redis.monitor.pojo.MonitorClients;
 import com.linda.cluster.redis.monitor.pojo.MonitorCpu;
 import com.linda.cluster.redis.monitor.pojo.MonitorKeyspace;
 import com.linda.cluster.redis.monitor.pojo.MonitorMemory;
-import com.linda.cluster.redis.monitor.pojo.MonitorPersitence;
+import com.linda.cluster.redis.monitor.pojo.MonitorPersistence;
 import com.linda.cluster.redis.monitor.pojo.MonitorReplication;
 import com.linda.cluster.redis.monitor.pojo.MonitorServer;
 import com.linda.cluster.redis.monitor.pojo.MonitorStat;
@@ -25,7 +25,7 @@ public class RedisMonitorInfoBean {
 	private MonitorCpu cpu;
 	private List<MonitorKeyspace> keyspaces;
 	private MonitorMemory memory;
-	private MonitorPersitence persistence;
+	private MonitorPersistence persistence;
 	private MonitorReplication replication;
 	private MonitorServer server;
 	private MonitorStat stat;

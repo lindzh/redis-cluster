@@ -2,6 +2,9 @@ package com.linda.cluster.redis.monitor.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.linda.cluster.redis.monitor.dao.ClusterDao;
 import com.linda.cluster.redis.monitor.dao.ProductDao;
 import com.linda.cluster.redis.monitor.dao.RedisNodeDao;
@@ -9,12 +12,14 @@ import com.linda.cluster.redis.monitor.pojo.Cluster;
 import com.linda.cluster.redis.monitor.pojo.Product;
 import com.linda.cluster.redis.monitor.pojo.RedisNode;
 
+@Service
 public class RedisClusterAdminService {
 	
+	@Autowired
 	private ProductDao productDao;
-	
+	@Autowired
 	private ClusterDao clusterDao;
-	
+	@Autowired
 	private RedisNodeDao redisNodeDao;
 	
 	public Product addProduct(Product product){

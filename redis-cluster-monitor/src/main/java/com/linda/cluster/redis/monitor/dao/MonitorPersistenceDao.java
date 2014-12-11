@@ -4,21 +4,21 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.linda.cluster.redis.monitor.pojo.MonitorPersitence;
+import com.linda.cluster.redis.monitor.pojo.MonitorPersistence;
 
 public interface MonitorPersistenceDao {
 
-	public int add(MonitorPersitence persistence);
+	public int add(MonitorPersistence persistence);
 	
-	public List<MonitorPersitence> getByProductAndTime(@Param("productId")long productId,@Param("start")long start,@Param("end")long end,@Param("limit")int limit,@Param("offset")int offset);
+	public List<MonitorPersistence> getByProductAndTime(@Param("productId")long productId,@Param("start")long start,@Param("end")long end,@Param("limit")int limit,@Param("offset")int offset);
 	
 	public int getCountByProductAndTime(@Param("productId")long productId,@Param("start")long start,@Param("end")long end);
 	
-	public List<MonitorPersitence> getByClusterAndTime(@Param("clusterId")long clusterId,@Param("start")long start,@Param("end")long end,@Param("limit")int limit,@Param("offset")int offset);
+	public List<MonitorPersistence> getByClusterAndTime(@Param("clusterId")long clusterId,@Param("start")long start,@Param("end")long end,@Param("limit")int limit,@Param("offset")int offset);
 	
 	public int getCountByClusterAndTime(@Param("clusterId")long clusterId,@Param("start")long start,@Param("end")long end);
 	
-	public List<MonitorPersitence> getByNodeAndTime(@Param("nodeId")long nodeId,@Param("start")long start,@Param("end")long end,@Param("limit")int limit,@Param("offset")int offset);
+	public List<MonitorPersistence> getByNodeAndTime(@Param("nodeId")long nodeId,@Param("start")long start,@Param("end")long end,@Param("limit")int limit,@Param("offset")int offset);
 	
 	public int getCountByNodeAndTime(@Param("nodeId")long nodeId,@Param("start")long start,@Param("end")long end);
 	

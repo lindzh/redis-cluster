@@ -1,36 +1,66 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 
-<typeAliases>
-    <typeAlias alias="cluster" type="com.linda.cluster.redis.monitor.pojo.Cluster"/>
-    <typeAlias alias="product" type="com.linda.cluster.redis.monitor.pojo.Product"/>
-	<typeAlias alias="redisNode" type="com.linda.cluster.redis.monitor.pojo.RedisNode"/>
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+					       http://www.springframework.org/schema/context
+						   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						   http://www.springframework.org/schema/tx
+						   http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+						   http://www.springframework.org/schema/aop
+						   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+						   http://www.springframework.org/schema/mvc
+						   http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+						   
+	<context:property-placeholder location="classpath:mysql.properties" />
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${mysql.driver}" />
+		<property name="jdbcUrl" value="${mysql.url}" />
+		<property name="user" value="${mysql.username}" />
+		<property name="password" value="${mysql.password}" />
+		<property name="minPoolSize" value="10" />
+        <property name="maxPoolSize" value="100" />
+        <property name="maxIdleTime" value="1800" />
+        <property name="acquireIncrement" value="3" />
+        <property name="maxStatements" value="1000" />
+        <property name="initialPoolSize" value="10" />
+        <property name="idleConnectionTestPeriod" value="60" />
+        <property name="acquireRetryAttempts" value="30" />
+        <property name="breakAfterAcquireFailure" value="true" />
+        <property name="testConnectionOnCheckin" value="true"/>
+	</bean>
+ 
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:sqlmap-config.xml"></property>
+	</bean>
+
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.linda.cluster.redis.monitor.dao" />
+	</bean>
+
 	
-    <typeAlias alias="monitorClients" type="com.linda.cluster.redis.monitor.pojo.MonitorClients"/>
-	<typeAlias alias="monitorCpu" type="com.linda.cluster.redis.monitor.pojo.MonitorCpu"/>
-	<typeAlias alias="monitorKeyspace" type="com.linda.cluster.redis.monitor.pojo.MonitorKeyspace"/>
-	<typeAlias alias="monitorMemory" type="com.linda.cluster.redis.monitor.pojo.MonitorMemory"/>
-	<typeAlias alias="monitorPersistence" type="com.linda.cluster.redis.monitor.pojo.MonitorPersistence"/>
-	<typeAlias alias="monitorReplication" type="com.linda.cluster.redis.monitor.pojo.MonitorReplication"/>
-	<typeAlias alias="monitorServer" type="com.linda.cluster.redis.monitor.pojo.MonitorServer"/>
-	<typeAlias alias="monitorStat" type="com.linda.cluster.redis.monitor.pojo.monitorStat"/>
-
-</typeAliases>
-
-<mappers>
-	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/ClusterDaoSqlmap.xml"/>
-	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/ProductDaoSqlmap.xml"/>
-	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/RedisNodeDaoSqlmap.xml"/>
+	<bean id="transactionManager" class="com.linda.cluster.redis.monitor.spring.MonitorTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 	
-	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorClientsDaoSqlmap.xml"/>
-	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorCpuDaoSqlmap.xml"/>
-	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorKeyspaceDaoSqlmap.xml"/>
-	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorMemoryDaoSqlmap.xml"/>
-	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorPersistenceDaoSqlmap.xml"/>
-	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorReplicationDaoSqlmap.xml"/>
-	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorServerDaoSqlmap.xml"/>
-	<mapper resource="com/linda/cluster/redis/monitor/dao/sqlmap/MonitorStatDaoSqlmap.xml"/>
-</mappers>
-</configuration>
+	<bean id="monitorAdvice" class="com.linda.cluster.redis.monitor.spring.MonitorTransactionAdvice"/>
+	
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" isolation="DEFAULT" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<!-- transaction config -->
+		<aop:pointcut id="transactionBusiness" expression="execution(@com.linda.cluster.redis.monitor.spring.MonitorTransaction * *(..))" />
+		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionBusiness" />
+	</aop:config>
+</beans>

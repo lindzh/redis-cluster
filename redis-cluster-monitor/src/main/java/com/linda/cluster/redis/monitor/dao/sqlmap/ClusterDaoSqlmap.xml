@@ -4,7 +4,7 @@
 	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.linda.cluster.redis.monitor.dao.ClusterDao">
 
-	<insert id="add" parameterType="cluster">
+	<insert id="add" parameterType="cluster" useGeneratedKeys="true" keyProperty="id">
 		insert into redis_cluster(productId,clusterName) values(#{productId},#{clusterName})
 	</insert>
 	

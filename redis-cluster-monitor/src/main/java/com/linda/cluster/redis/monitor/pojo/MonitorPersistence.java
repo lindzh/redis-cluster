@@ -3,7 +3,7 @@ package com.linda.cluster.redis.monitor.pojo;
 import lombok.Data;
 
 @Data
-public class MonitorPersitence extends MonitorPartBase {
+public class MonitorPersistence extends MonitorPartBase {
 	private long id;
 	
 	private long rdb_changes_since_last_save;

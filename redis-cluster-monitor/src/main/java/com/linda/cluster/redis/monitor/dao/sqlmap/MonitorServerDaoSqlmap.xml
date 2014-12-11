@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 	  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.linda.monitorServer.redis.monitor.dao.MonitorServerDao">
+<mapper namespace="com.linda.cluster.redis.monitor.dao.MonitorServerDao">
 
-	<insert id="add" parameterType="monitorServer">
+	<insert id="add" parameterType="monitorServer" useGeneratedKeys="true" keyProperty="id">
 		insert into redis_monitor_server(productId,clusterId,redisNodeId,addtime,redis_version,redis_git_sha1,
 		redis_git_dirty,redis_build_id,redis_mode,os,arch_bits,multiplexing_api,gcc_version,process_id,run_id,
 		tcp_port,uptime_in_seconds,uptime_in_days,hz,lru_clock,config_file) 

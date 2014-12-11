@@ -5,6 +5,7 @@ create table redis_monitor_replication(
 	redisNodeId bigint not null,
 	addtime bigint not null,
 	
+	role varchar(10) default null,
 	connected_slaves int default 0,
 	slaveJson varchar(100) default null,
 	master_repl_offset bigint default 0,

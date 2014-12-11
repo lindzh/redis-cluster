@@ -4,7 +4,7 @@
 	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.linda.cluster.redis.monitor.dao.MonitorPersistenceDao">
 
-	<insert id="add" parameterType="monitorPersistence">
+	<insert id="add" parameterType="monitorPersistence" useGeneratedKeys="true" keyProperty="id">
 		insert into redis_monitor_persistence(productId,clusterId,redisNodeId,addtime,rdb_changes_since_last_save,rdb_bgsave_in_progress,rdb_last_save_time,rdb_last_bgsave_status,
 		rdb_last_bgsave_time_sec,rdb_current_bgsave_time_sec,aof_enabled,aof_rewrite_in_progress,aof_rewrite_scheduled,aof_last_rewrite_time_sec,aof_current_rewrite_time_sec,
 		aof_last_bgrewrite_status,aof_last_write_status)

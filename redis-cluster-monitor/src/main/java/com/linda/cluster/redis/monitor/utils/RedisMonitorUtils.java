@@ -18,7 +18,7 @@ import com.linda.cluster.redis.monitor.pojo.MonitorCpu;
 import com.linda.cluster.redis.monitor.pojo.MonitorKeyspace;
 import com.linda.cluster.redis.monitor.pojo.MonitorMemory;
 import com.linda.cluster.redis.monitor.pojo.MonitorPartBase;
-import com.linda.cluster.redis.monitor.pojo.MonitorPersitence;
+import com.linda.cluster.redis.monitor.pojo.MonitorPersistence;
 import com.linda.cluster.redis.monitor.pojo.MonitorReplication;
 import com.linda.cluster.redis.monitor.pojo.MonitorServer;
 import com.linda.cluster.redis.monitor.pojo.MonitorSlaveBean;
@@ -143,9 +143,9 @@ public class RedisMonitorUtils {
 		return IntrospectorUtils.getInstance(MonitorStat.class, properties);
 	}
 	
-	public static MonitorPersitence toPersistenceBean(List<KeyValueBean> keyvalues){
+	public static MonitorPersistence toPersistenceBean(List<KeyValueBean> keyvalues){
 		Properties properties = RedisMonitorUtils.toProperties(keyvalues);
-		return IntrospectorUtils.getInstance(MonitorPersitence.class, properties);
+		return IntrospectorUtils.getInstance(MonitorPersistence.class, properties);
 	}
 	
 	public static MonitorReplication toReplicationBean(List<KeyValueBean> keyvalues){

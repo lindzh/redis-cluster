@@ -9,13 +9,17 @@ public class KeyValueUtils {
 	
 	public static KeyValueBean toKeyValue(String line,String split){
 		if(line!=null){
-			String[] strs = line.trim().split(split);
-			if(strs.length==2){
-				return new KeyValueBean(strs[0],strs[1]);
+			int idx = line.indexOf(split);
+			if(idx>0&&idx<line.length()){
+				String key = line.substring(0,idx);
+				String value = line.substring(idx+1);
+				return new KeyValueBean(key, value);
 			}
 		}
 		return null;
 	}
+	
+	
 	
 	public static List<KeyValueBean> toKeyValue(String line,String kvSplit,String seperator){
 		List<KeyValueBean> list = new ArrayList<KeyValueBean>();
@@ -23,9 +27,9 @@ public class KeyValueUtils {
 			String[] splits = line.trim().split(seperator);
 			if(splits!=null){
 				for(String kv:splits){
-					String[] kvStrs = kv.split(kvSplit);
-					if(kvStrs!=null&&kvStrs.length==2){
-						list.add(new KeyValueBean(kvStrs[0], kvStrs[1]));
+					KeyValueBean bean = KeyValueUtils.toKeyValue(kv, kvSplit);
+					if(bean!=null){
+						list.add(bean);
 					}
 				}
 			}

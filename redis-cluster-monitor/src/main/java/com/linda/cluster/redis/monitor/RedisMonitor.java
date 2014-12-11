@@ -5,9 +5,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.annotation.Resource;
+
 import lombok.Data;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 import redis.clients.jedis.Jedis;
 
@@ -17,11 +20,13 @@ import com.linda.cluster.redis.monitor.pojo.RedisNode;
 import com.linda.cluster.redis.monitor.service.RedisClusterAdminService;
 import com.linda.cluster.redis.monitor.service.RedisInfoDataService;
 
+@Component
 @Data
 public class RedisMonitor {
 	
+	@Resource
 	private RedisInfoDataService infoDataService;
-	
+	@Resource
 	private RedisClusterAdminService redisClusterAdminService;
 	
 	private Logger logger = Logger.getLogger(RedisMonitor.class);

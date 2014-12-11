@@ -4,7 +4,7 @@
 	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.linda.cluster.redis.monitor.dao.MonitorCpuDao">
 
-	<insert id="add" parameterType="monitorCpu">
+	<insert id="add" parameterType="monitorCpu" useGeneratedKeys="true" keyProperty="id">
 		insert into redis_monitor_cpu(productId,clusterId,redisNodeId,addtime,used_cpu_sys,used_cpu_user,used_cpu_sys_children,used_cpu_user_children) 
 		values(#{productId},#{clusterId},#{redisNodeId},#{addtime},#{used_cpu_sys},#{used_cpu_user},#{used_cpu_sys_children},#{used_cpu_user_children})
 	</insert>

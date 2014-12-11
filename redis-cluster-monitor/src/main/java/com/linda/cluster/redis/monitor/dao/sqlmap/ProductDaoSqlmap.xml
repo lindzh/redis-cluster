@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 	  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.linda.product.redis.monitor.dao.ProductDao">
+<mapper namespace="com.linda.cluster.redis.monitor.dao.ProductDao">
 
-	<insert id="add" parameterType="product">
+	<insert id="add" parameterType="product" useGeneratedKeys="true" keyProperty="id">
 		insert into redis_product(name) values(#{name})
 	</insert>
 	

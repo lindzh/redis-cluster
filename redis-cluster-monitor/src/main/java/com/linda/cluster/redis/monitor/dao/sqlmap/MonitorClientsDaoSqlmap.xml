@@ -4,7 +4,7 @@
 	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.linda.cluster.redis.monitor.dao.MonitorClientsDao">
 
-	<insert id="add" parameterType="monitorClients">
+	<insert id="add" parameterType="monitorClients" useGeneratedKeys="true" keyProperty="id">
 		insert into redis_monitor_clients(productId,clusterId,redisNodeId,addtime,connected_clients,client_longest_output_list,client_biggest_input_buf,blocked_clients)
 		values(#{productId},#{clusterId},#{redisNodeId},#{addtime},#{connected_clients},#{client_longest_output_list},#{client_biggest_input_buf},#{blocked_clients})
 	</insert>
