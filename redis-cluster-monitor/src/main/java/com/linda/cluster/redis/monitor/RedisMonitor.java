@@ -58,7 +58,7 @@ public class RedisMonitor {
 			for(Product pdt:products){
 				RedisProductMonitor monitor = new RedisProductMonitor(pdt,infoDataService,redisClusterAdminService);
 				productMonitorMap.put(pdt, monitor);
-				monitor.startMonitor();
+				monitor.startup();
 			}
 		}else{
 			logger.info("monitor no product has in database");
@@ -68,7 +68,7 @@ public class RedisMonitor {
 	public void stopMonitor(){
 		Collection<RedisProductMonitor> monitors = productMonitorMap.values();
 		for(RedisProductMonitor monitor:monitors){
-			monitor.stopMonitor();
+			monitor.shutdown();
 		}
 	}
 	
@@ -77,14 +77,14 @@ public class RedisMonitor {
 		Product product = redisClusterAdminService.getProduct(productId, true);
 		RedisProductMonitor monitor = new RedisProductMonitor(product,infoDataService,redisClusterAdminService);
 		productMonitorMap.put(product, monitor);
-		monitor.startMonitor();
+		monitor.startup();
 	}
 	
 	public void stopProductMonitor(long productId){
 		Product product = this.getProduct(productId);
 		if(product!=null){
 			RedisProductMonitor monitor = productMonitorMap.get(product);
-			monitor.stopMonitor();
+			monitor.shutdown();
 			monitor.interrupt();
 			productMonitorMap.remove(product);
 		}
