@@ -12,5 +12,5 @@ public class RedisProductDataBean {
 	//sharding映射表
 	private List<Sharding> sharding;
 	
-
+	private String backup;
 }

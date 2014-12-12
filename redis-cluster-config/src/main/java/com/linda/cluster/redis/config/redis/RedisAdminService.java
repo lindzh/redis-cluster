@@ -1,5 +1,7 @@
 package com.linda.cluster.redis.config.redis;
 
+import lombok.Data;
+
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
@@ -9,6 +11,7 @@ import com.linda.cluster.redis.common.bean.ClusterStateBean;
 import com.linda.cluster.redis.common.bean.CountBean;
 import com.linda.cluster.redis.common.bean.HostAndPort;
 import com.linda.cluster.redis.common.bean.RedisZkData;
+import com.linda.cluster.redis.common.constant.RedisZkNodeConstant;
 import com.linda.cluster.redis.common.utils.RedisGetNodeDataCallback;
 import com.linda.cluster.redis.common.utils.RedisSetNodeDataCallback;
 import com.linda.cluster.redis.common.utils.RedisZookeeperUtils;
@@ -16,6 +19,7 @@ import com.linda.cluster.redis.common.utils.ZkNodeCreateCallback;
 import com.linda.cluster.redis.config.config.RedisProductDataBean;
 import com.linda.cluster.redis.config.config.RedisZkConfig;
 
+@Data
 public class RedisAdminService {
 	
 	private ZooKeeper zookeeper;
@@ -59,8 +63,10 @@ public class RedisAdminService {
 
 		@Override
 		public Stat onConnectionLoss(String path, byte[] data, int version,CountBean count) {
-			// TODO Auto-generated method stub
-			return null;
+			if(count.getCount()>retryTime){
+				return null;
+			}
+			return RedisZookeeperUtils.zkSetNodeData(zookeeper, path, version, data, count, this);
 		}
 
 		@Override
@@ -113,10 +119,17 @@ public class RedisAdminService {
 	 * @return
 	 */
 	public boolean addOrUpdateCluster(String productName,String clustername,ClusterStateBean state){
+		//创建集群节点
 		String path = RedisZookeeperUtils.genPath(zkConfig.getRedisBasePath(),productName,clustername);
 		byte[] data = RedisZookeeperUtils.getBytes(state);
 		CountBean count = new CountBean();
-		return RedisZookeeperUtils.zkCreateNode(zookeeper, path, data, CreateMode.PERSISTENT,count,createCallback);
+		boolean clusterNode = RedisZookeeperUtils.zkCreateNode(zookeeper, path, data, CreateMode.PERSISTENT,count,createCallback);
+		//创建监控节点
+		CountBean monitorCount = new CountBean();
+		String monitorPath = RedisZookeeperUtils.genPath(zkConfig.getRedisBasePath(),productName,clustername,RedisZkNodeConstant.REDIS_PRODUCT_CUSTER_MONITOR_NODE);
+		byte[] monitorData = RedisZkNodeConstant.REDIS_NODE_NULL_DATA.getBytes();
+		boolean monitorResult = RedisZookeeperUtils.zkCreateNode(zookeeper, monitorPath, monitorData, CreateMode.PERSISTENT, monitorCount, createCallback);
+		return clusterNode&monitorResult;
 	}
 	
 	/**
@@ -128,10 +141,19 @@ public class RedisAdminService {
 	 * @return
 	 */
 	public boolean addOrUpdateRedisNode(String productName,String clustername,String nodename,HostAndPort hostAndPort){
-		String path = RedisZookeeperUtils.genPath(zkConfig.getRedisBasePath(),productName,clustername,nodename);
-		byte[] data = RedisZookeeperUtils.getBytes(hostAndPort);
-		CountBean count = new CountBean();
-		return RedisZookeeperUtils.zkCreateNode(zookeeper, path, data, CreateMode.PERSISTENT,count,createCallback);
+		if(nodename.equals(RedisZkNodeConstant.REDIS_PRODUCT_CUSTER_MONITOR_NODE)){
+			throw new IllegalArgumentException("节点名称不能为monitors");
+		}
+		String nodePath = RedisZookeeperUtils.genPath(zkConfig.getRedisBasePath(),productName,clustername,nodename);
+		byte[] nodeData = RedisZookeeperUtils.getBytes(hostAndPort);
+		CountBean nodeCount = new CountBean();
+		boolean nodeResult = RedisZookeeperUtils.zkCreateNode(zookeeper, nodePath, nodeData, CreateMode.PERSISTENT,nodeCount,createCallback);
+	
+		String nodeVotePath = RedisZookeeperUtils.genPath(zkConfig.getRedisBasePath(),productName,clustername,nodename,RedisZkNodeConstant.REDIS_PORDUCT_CLUSTER_NODE_VOTE_NODE);
+		byte[] nodeVoteData = RedisZkNodeConstant.REDIS_NODE_NULL_DATA.getBytes();
+		CountBean nodeVoteCount = new CountBean();
+		boolean nodeVoteResult = RedisZookeeperUtils.zkCreateNode(zookeeper, nodeVotePath, nodeVoteData, CreateMode.PERSISTENT,nodeVoteCount,createCallback);
+		return nodeResult&nodeVoteResult;
 	}
 
 }

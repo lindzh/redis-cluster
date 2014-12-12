@@ -16,5 +16,5 @@
 			"port":10003
 		}
 	],
-	"redisBasePath":"redis-cluster"
+	"redisBasePath":"/redis-cluster"
 }
