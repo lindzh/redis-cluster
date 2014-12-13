@@ -1,6 +1,6 @@
 package com.linda.cluster.redis.keepalived.redis;
 
-import com.linda.cluster.redis.keepalived.conf.HostAndPort;
+import com.linda.cluster.redis.common.bean.HostAndPort;
 
 public class RedisKeepAlivedTest {
 	

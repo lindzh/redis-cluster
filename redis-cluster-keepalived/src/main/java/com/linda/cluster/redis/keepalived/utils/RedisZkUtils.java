@@ -2,8 +2,8 @@ package com.linda.cluster.redis.keepalived.utils;
 
 import java.util.List;
 
+import com.linda.cluster.redis.common.bean.HostAndPort;
 import com.linda.cluster.redis.common.utils.JSONUtils;
-import com.linda.cluster.redis.keepalived.conf.HostAndPort;
 
 public class RedisZkUtils {
 	

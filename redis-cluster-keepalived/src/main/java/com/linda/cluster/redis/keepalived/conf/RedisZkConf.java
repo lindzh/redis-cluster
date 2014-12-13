@@ -3,10 +3,11 @@ package com.linda.cluster.redis.keepalived.conf;
 import java.io.InputStream;
 import java.util.List;
 
+import lombok.Data;
+
+import com.linda.cluster.redis.common.bean.HostAndPort;
 import com.linda.cluster.redis.common.utils.IOUtils;
 import com.linda.cluster.redis.common.utils.JSONUtils;
-
-import lombok.Data;
 
 @Data
 public class RedisZkConf {

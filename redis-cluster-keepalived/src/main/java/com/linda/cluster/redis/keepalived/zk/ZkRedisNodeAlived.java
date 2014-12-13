@@ -15,9 +15,9 @@ import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
 import com.linda.cluster.redis.common.Service;
+import com.linda.cluster.redis.common.bean.HostAndPort;
 import com.linda.cluster.redis.common.exception.RedisZkException;
 import com.linda.cluster.redis.common.utils.JSONUtils;
-import com.linda.cluster.redis.keepalived.conf.HostAndPort;
 import com.linda.cluster.redis.keepalived.utils.RedisZkUtils;
 
 public class ZkRedisNodeAlived implements Service{

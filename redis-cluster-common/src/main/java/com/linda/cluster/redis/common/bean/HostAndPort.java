@@ -13,5 +13,8 @@ public class HostAndPort {
 	private String host;
 	private int port;
 	private boolean alive;//节点是否存活，用于keepalived info
+	private String master;
+	
+	
 	
 }

@@ -1,6 +1,7 @@
 package com.linda.cluster.redis.common.utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.zookeeper.CreateMode;
@@ -78,6 +79,7 @@ public class RedisZookeeperUtils {
 			if(index<pathes.length-1){
 				sb.append("/");
 			}
+			index++;
 		}
 		return sb.toString();
 	}
@@ -142,6 +144,40 @@ public class RedisZookeeperUtils {
 			
 		}
 		return false;
+	}
+	
+	public static List<String> zkGetChildren(ZooKeeper zk,String path,Watcher watcher,CountBean count,RedisGetChildrenCallback callback){
+		try {
+			return zk.getChildren(path, watcher);
+		} catch (KeeperException e) {
+			count.incr();
+			if(e instanceof ConnectionLossException){
+				return callback.onConnectionLoss(path, watcher, count);
+			}else{
+				return callback.onZkException(path, watcher, count);
+			}
+		} catch (InterruptedException e) {
+			
+		}
+		return Collections.emptyList();
+	}
+	
+	public static int getSequenceId(String node,String prefix){
+		String id = node.substring(prefix.length());
+		return Integer.parseInt(id);
+	}
+	
+	public static String getMaster(List<String> nodes,String prefix){
+		String result = null;
+		int id = Integer.MAX_VALUE;
+		for(String node:nodes){
+			int sequenceId = getSequenceId(node,prefix);
+			if(sequenceId<id){
+				result = node;
+				id = sequenceId;
+			}
+		}
+		return result;
 	}
 	
 	public static RedisClientBean getRedisClientBean(String conf,String password){

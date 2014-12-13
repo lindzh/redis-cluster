@@ -20,53 +20,13 @@
 	"products":[
 		{
 			"zkPassword":"123456",
-			"productName":"cms-redis",
-			"redisFailOverPaxos":2,
+			"productName":"lindzh",
 			"pingInterval":5000,
 			"infoInterval":5000,
 			"clusters":[
-				{
-					"clusterName":"node-redis-1",
-					"master":"cms-redis-node1-8100",
-					"nodes":[
-						{
-							"name":"cms-redis-node1-8100",
-							"host":"127.0.0.1",
-							"port":8100
-						},
-						{
-							"name":"cms-redis-node1-8101",
-							"host":"127.0.0.1",
-							"port":8101
-						},
-						{
-							"name":"cms-redis-node1-8102",
-							"host":"127.0.0.1",
-							"port":8102
-						}
-					]
-				},	
-				{
-					"clusterName":"node-redis-2",
-					"master":"cms-redis-node2-8200",
-					"nodes":[
-						{
-							"name":"cms-redis-node2-8200",
-							"host":"127.0.0.1",
-							"port":8200
-						},
-						{
-							"name":"cms-redis-node2-8201",
-							"host":"127.0.0.1",
-							"port":8201
-						},
-						{
-							"name":"cms-redis-node2-8202",
-							"host":"127.0.0.1",
-							"port":8202
-						}
-					]
-				}
+				"lindzh-cluster1",
+				"lindzh-cluster2",
+				"lindzh-backup"
 			]
 		}
 	]

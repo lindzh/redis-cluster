@@ -7,18 +7,18 @@ import lombok.Getter;
 import lombok.Setter;
 import redis.clients.jedis.Jedis;
 
-import com.linda.cluster.redis.keepalived.conf.HostAndPort;
+import com.linda.cluster.redis.common.bean.HostAndPort;
 import com.linda.cluster.redis.keepalived.redis.RedisDataNode.RedisState;
 
 public abstract class RedisAliveBase implements RedisAlivedListener{
 
-	private List<RedisAlivedListener> listeners = new ArrayList<RedisAlivedListener>();
-	private Jedis jedis;
+	protected List<RedisAlivedListener> listeners = new ArrayList<RedisAlivedListener>();
+	protected Jedis jedis;
 	@Setter
 	@Getter
-	private HostAndPort redisHost;
+	protected HostAndPort redisHost;
 	@Getter
-	private RedisState state = RedisState.INIT;
+	protected RedisState state = RedisState.INIT;
 	
 	private void init(){
 		jedis = new Jedis(redisHost.getHost(),redisHost.getPort());
