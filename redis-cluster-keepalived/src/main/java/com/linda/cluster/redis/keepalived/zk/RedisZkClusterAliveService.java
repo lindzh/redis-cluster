@@ -1,7 +1,12 @@
 package com.linda.cluster.redis.keepalived.zk;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -27,6 +32,7 @@ import com.linda.cluster.redis.keepalived.redis.MultiRedisAlivedPingService;
 import com.linda.cluster.redis.keepalived.redis.RedisAliveBase;
 import com.linda.cluster.redis.keepalived.redis.RedisAlivedListener;
 import com.linda.cluster.redis.keepalived.redis.SimpleRedisAliveNode;
+import com.linda.cluster.redis.keepalived.utils.RedisZkUtils;
 
 
 public class RedisZkClusterAliveService implements Service,RedisAlivedListener{
@@ -198,9 +204,38 @@ public class RedisZkClusterAliveService implements Service,RedisAlivedListener{
 	}
 	
 	private void checkAndChooseMaster(){
+		//TODO
 		if(this.isClusterMonitorMaster.get()){
-			//calculate master and set master
-			
+			String master = null;
+			Collection<HostAndPort> mNodes = monitorNodes.values();
+			Set<String> nodes = monitorNodes.keySet();
+			for(String node:nodes){
+				HostAndPort hostAndPort = monitorNodes.get(node);
+				SimpleRedisAliveNode redisAliveNode = redisNodePingService.getByHostAndPort(hostAndPort);
+				List<HostAndPort> slaves = redisAliveNode.getSlaves();
+				List<HostAndPort> list = RedisZkUtils.filterSlaves(slaves, mNodes);
+				if(list!=null&&list.size()>0){
+					master = node;
+					break;
+				}
+			}
+			this.chooseMaster(master);
+		}
+	}
+	
+	private void chooseMaster(String master){
+		if(this.isClusterMonitorMaster.get()){
+			HashMap<HostAndPort, Boolean> changeMap = new HashMap<HostAndPort,Boolean>();
+			LinkedList<HostAndPort> slaveQueue = new LinkedList<HostAndPort>();
+			Collection<HostAndPort> values = monitorNodes.values();
+			for(HostAndPort hostAndPort:values){
+				if(master==null){
+					master = hostAndPort.getName();
+					hostAndPort.setMaster(null);
+					slaveQueue.addFirst(hostAndPort);
+				}
+				
+			}
 		}
 	}
 	

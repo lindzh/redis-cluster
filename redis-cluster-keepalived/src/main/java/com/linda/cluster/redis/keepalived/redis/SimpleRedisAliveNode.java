@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.linda.cluster.redis.common.bean.HostAndPort;
+import com.linda.cluster.redis.keepalived.utils.RedisZkUtils;
 
 public class SimpleRedisAliveNode extends RedisAliveBase{
 
@@ -25,7 +26,7 @@ public class SimpleRedisAliveNode extends RedisAliveBase{
 		List<HostAndPort> slaves = new ArrayList<HostAndPort>();
 		try{
 			String info = jedis.info();
-			//TODO
+			return RedisZkUtils.getSlaves(info);
 		}catch(Exception e){
 			super.onException(this, e);
 		}

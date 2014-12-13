@@ -2,6 +2,7 @@ package com.linda.cluster.redis.common.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import com.linda.cluster.redis.common.bean.KeyValueBean;
 
@@ -19,7 +20,16 @@ public class KeyValueUtils {
 		return null;
 	}
 	
-	
+	public static Properties toProperties(List<KeyValueBean> keyvalues){
+		if(keyvalues!=null&&keyvalues.size()>0){
+			Properties props = new Properties();
+			for(KeyValueBean keyvalue:keyvalues){
+				props.setProperty(keyvalue.getKey(), keyvalue.getValue());
+			}
+			return props;
+		}
+		return null;
+	}
 	
 	public static List<KeyValueBean> toKeyValue(String line,String kvSplit,String seperator){
 		List<KeyValueBean> list = new ArrayList<KeyValueBean>();
