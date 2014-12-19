@@ -1,15 +1,14 @@
 package com.linda.cluster.redis.keepalived.zk;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Queue;
+import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
@@ -18,6 +17,7 @@ import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
 import com.linda.cluster.redis.common.Service;
+import com.linda.cluster.redis.common.bean.ClusterStateBean;
 import com.linda.cluster.redis.common.bean.CountBean;
 import com.linda.cluster.redis.common.bean.HostAndPort;
 import com.linda.cluster.redis.common.bean.RedisZkData;
@@ -25,6 +25,7 @@ import com.linda.cluster.redis.common.constant.RedisZkNodeConstant;
 import com.linda.cluster.redis.common.utils.JSONUtils;
 import com.linda.cluster.redis.common.utils.RedisGetChildrenCallback;
 import com.linda.cluster.redis.common.utils.RedisGetNodeDataCallback;
+import com.linda.cluster.redis.common.utils.RedisReplicationLinkUtils;
 import com.linda.cluster.redis.common.utils.RedisSetNodeDataCallback;
 import com.linda.cluster.redis.common.utils.RedisZookeeperUtils;
 import com.linda.cluster.redis.common.utils.ZkNodeCreateCallback;
@@ -32,7 +33,6 @@ import com.linda.cluster.redis.keepalived.redis.MultiRedisAlivedPingService;
 import com.linda.cluster.redis.keepalived.redis.RedisAliveBase;
 import com.linda.cluster.redis.keepalived.redis.RedisAlivedListener;
 import com.linda.cluster.redis.keepalived.redis.SimpleRedisAliveNode;
-import com.linda.cluster.redis.keepalived.utils.RedisZkUtils;
 
 
 public class RedisZkClusterAliveService implements Service,RedisAlivedListener{
@@ -59,32 +59,41 @@ public class RedisZkClusterAliveService implements Service,RedisAlivedListener{
 	
 	private Logger logger = Logger.getLogger(RedisZkClusterAliveService.class);
 	
+	private List<String> monitors = new CopyOnWriteArrayList<String>();
+	
 	private ZkNodeCreateCallback monitorNodeCreateCallback = new ZkNodeCreateCallback(){
 		@Override
 		public boolean onNodeExist(String path, byte[] data, CountBean count) {
+			//can't happen
 			return false;
 		}
 
 		@Override
 		public boolean onConnectionLoss(String path, byte[] data,CountBean count) {
-			return false;
+			if(count.getCount()>5){
+				return false;
+			}
+			return RedisZookeeperUtils.zkCreateNode(zooKeeper, path, data, CreateMode.EPHEMERAL_SEQUENTIAL, count, this);
 		}
 
 		@Override
 		public boolean onZkException(String path, byte[] data, CountBean count) {
-			return false;
+			return this.onConnectionLoss(path, data, count);
 		}
 	};
 	
 	private RedisGetChildrenCallback redisGetClusterNodesCallback = new RedisGetChildrenCallback(){
 		@Override
 		public List<String> onConnectionLoss(String path, Watcher watcher,CountBean count) {
-			return null;
+			if(count.getCount()>5){
+				return Collections.emptyList();
+			}
+			return RedisZookeeperUtils.zkGetChildren(zooKeeper, path, watcher, count, this);
 		}
 
 		@Override
 		public List<String> onZkException(String path, Watcher watcher,CountBean count) {
-			return null;
+			return this.onConnectionLoss(path, watcher, count);
 		}
 	};
 	
@@ -130,6 +139,12 @@ public class RedisZkClusterAliveService implements Service,RedisAlivedListener{
 		}
 	};
 	
+	private Watcher redisClusterDataWatcher = new Watcher(){
+		public void process(WatchedEvent event) {
+			
+		}
+	};
+	
 	private Watcher redisNodeDataWatcher = new Watcher(){
 		public void process(WatchedEvent event) {
 			
@@ -169,11 +184,27 @@ public class RedisZkClusterAliveService implements Service,RedisAlivedListener{
 		boolean createMonitorResult = RedisZookeeperUtils.zkCreateNode(zooKeeper, path, data, CreateMode.EPHEMERAL_SEQUENTIAL, countBean, monitorNodeCreateCallback);
 		if(createMonitorResult){
 			CountBean monitorMasterCountBean = new CountBean();
-			List<String> monitors = RedisZookeeperUtils.zkGetChildren(zooKeeper, path, redisClusterMonitorMasterWatcher, monitorMasterCountBean, redisGetClusterNodesCallback);
+			monitors.clear();
+			List<String> refreshMonitors = RedisZookeeperUtils.zkGetChildren(zooKeeper, path, redisClusterMonitorMasterWatcher, monitorMasterCountBean, redisGetClusterNodesCallback);
+			monitors.addAll(refreshMonitors);
 			this.checkMonitorMaster(monitors);
 		}else{
 			logger.error("can't get monitors after create on cluster "+productName+"/"+clusterName);
 		}
+	}
+	
+	private ClusterStateBean getClusterStateAndMaster(){
+		String path = RedisZookeeperUtils.genPath(zkBase,productName,clusterName);
+		byte[] data = RedisZkNodeConstant.REDIS_NODE_NULL_DATA.getBytes();
+		CountBean bean = new CountBean();
+		RedisZkData zkData = RedisZookeeperUtils.zkGetNodeData(zooKeeper,redisClusterDataWatcher, path, data, bean, redisGetNodeDataCallback);
+		if(zkData!=null&&zkData.getDataLength()>0){
+			String conf = new String(zkData.getData());
+			if(StringUtils.isNotBlank(conf)){
+				return JSONUtils.fromJson(conf, ClusterStateBean.class);
+			}
+		}
+		return null;
 	}
 	
 	private void checkMonitorMaster(List<String> monitors){
@@ -195,46 +226,12 @@ public class RedisZkClusterAliveService implements Service,RedisAlivedListener{
 		CountBean countBean = new CountBean();
 		List<String> redisNodes = RedisZookeeperUtils.zkGetChildren(zooKeeper, path, redisClusterNodesWatcher, countBean, redisGetClusterNodesCallback);
 		for(String redisNode:redisNodes){
+			if(redisNode.equals(monitorPathName)){
+				continue;
+			}
 			boolean hasNode = this.getRedisNodeData(redisNode);
 			if(hasNode){
 				this.getRedisNodeVotes(redisNode);
-			}
-		}
-		this.checkAndChooseMaster();
-	}
-	
-	private void checkAndChooseMaster(){
-		//TODO
-		if(this.isClusterMonitorMaster.get()){
-			String master = null;
-			Collection<HostAndPort> mNodes = monitorNodes.values();
-			Set<String> nodes = monitorNodes.keySet();
-			for(String node:nodes){
-				HostAndPort hostAndPort = monitorNodes.get(node);
-				SimpleRedisAliveNode redisAliveNode = redisNodePingService.getByHostAndPort(hostAndPort);
-				List<HostAndPort> slaves = redisAliveNode.getSlaves();
-				List<HostAndPort> list = RedisZkUtils.filterSlaves(slaves, mNodes);
-				if(list!=null&&list.size()>0){
-					master = node;
-					break;
-				}
-			}
-			this.chooseMaster(master);
-		}
-	}
-	
-	private void chooseMaster(String master){
-		if(this.isClusterMonitorMaster.get()){
-			HashMap<HostAndPort, Boolean> changeMap = new HashMap<HostAndPort,Boolean>();
-			LinkedList<HostAndPort> slaveQueue = new LinkedList<HostAndPort>();
-			Collection<HostAndPort> values = monitorNodes.values();
-			for(HostAndPort hostAndPort:values){
-				if(master==null){
-					master = hostAndPort.getName();
-					hostAndPort.setMaster(null);
-					slaveQueue.addFirst(hostAndPort);
-				}
-				
 			}
 		}
 	}
@@ -272,16 +269,77 @@ public class RedisZkClusterAliveService implements Service,RedisAlivedListener{
 		String path = RedisZookeeperUtils.genPath(zkBase,productName,clusterName,redisNode,votePathName);
 		CountBean countBean = new CountBean();
 		List<String> votes = RedisZookeeperUtils.zkGetChildren(zooKeeper, path, redisVotesWatcher, countBean, redisGetClusterNodesCallback);
-		//TODO
+		this.shutdownNodeIfVote(redisNode, votes);
 	}
 	
+	private void shutdownNodeIfVote(String redisNode,List<String> votes){
+		//投票超过一定数量才会
+		if(votes.size()>monitors.size()/2){
+			if(isClusterMonitorMaster.get()){
+				HostAndPort hostAndPort = monitorNodes.get(redisNode);
+				hostAndPort.setAlive(false);
+				byte[] data = RedisZookeeperUtils.getBytes(hostAndPort);
+				String path = RedisZookeeperUtils.genPath(zkBase,productName,clusterName,redisNode);
+				CountBean countBean = new CountBean();
+				Stat stat = RedisZookeeperUtils.zkSetNodeData(zooKeeper, path, 0, data, countBean, redisSetNodeDataCallback);
+				if(stat!=null){
+					this.checkAndChooseMaster();
+				}
+			}
+		}
+	}
+	
+	private void checkAndChooseMaster(){
+		if(this.isClusterMonitorMaster.get()){
+			ClusterStateBean clusterState = this.getClusterStateAndMaster();
+			Map<String, HostAndPort> copy = RedisReplicationLinkUtils.copy(monitorNodes);
+			HostAndPort master = RedisReplicationLinkUtils.linkRedisNodes(monitorNodes, clusterState);
+			List<HostAndPort> changed = RedisReplicationLinkUtils.getChanged(copy, monitorNodes);
+			this.changeRedisNodeData(changed);
+			if(master!=null){
+				if(!clusterState.isAlive()||!clusterState.getMaster().equals(master.getName())){
+					clusterState.setAlive(true);
+					clusterState.setMaster(master.getName());
+					byte[] data = RedisZookeeperUtils.getBytes(clusterState);
+					String path = RedisZookeeperUtils.genPath(zkBase,productName,clusterName);
+					RedisZookeeperUtils.zkSetNodeData(zooKeeper, path, 1, data, new CountBean(), redisSetNodeDataCallback);
+				}
+			}
+		}
+	}
+	
+	private void changeRedisNodeData(List<HostAndPort> changes){
+		for(HostAndPort host:changes){
+			SimpleRedisAliveNode redisAlive = redisNodePingService.getByHostAndPort(host);
+			HostAndPort master = monitorNodes.get(host.getMaster());
+			if(redisAlive!=null&&master!=null){
+				boolean slaveOf = redisAlive.slaveOf(master);
+				if(slaveOf){
+					String path = RedisZookeeperUtils.genPath(zkBase,productName,clusterName,host.getName());
+					byte[] data = RedisZookeeperUtils.getBytes(host);
+					RedisZookeeperUtils.zkSetNodeData(zooKeeper, path, 1, data, new CountBean(), redisSetNodeDataCallback);
+				}
+			}
+		}
+	}
+	
+	/**
+	 * redis集群高可用启动
+	 * 先加入监控节点集合
+	 * 然后监控节点，更新监控状态，更新master slave关系
+	 */
 	@Override
 	public void startup() {
+		//启动监控节点ping thread
 		redisNodePingService.startup();
+		//创建监控节点/base/product/cluseter/monitors/monitor-0
 		this.createMonitorNode();
+		//获取redis节点
 		this.getClusterNodes();
+		//更新 master slave节点
+		this.checkAndChooseMaster();
 	}
-
+	
 	@Override
 	public void shutdown() {
 		
@@ -304,7 +362,9 @@ public class RedisZkClusterAliveService implements Service,RedisAlivedListener{
 			CountBean countBean = new CountBean();
 			//版本错误要求重新设置
 			Stat stat = RedisZookeeperUtils.zkSetNodeData(zooKeeper, path, 1, data, countBean, redisSetNodeDataCallback);
-			//这个地方还不能选举master
+			if(stat!=null){
+				this.checkAndChooseMaster();
+			}
 		}
 	}
 
