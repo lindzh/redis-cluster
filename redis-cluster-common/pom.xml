@@ -4,7 +4,7 @@
 
   <groupId>com.linda</groupId>
   <artifactId>redis-cluster-common</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>jar</packaging>
 
   <name>redis-cluster-common</name>
@@ -98,4 +98,18 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<distributionManagement>
+		<repository>
+			<id>repo</id>
+			<name>Netease Maven Repository</name>
+			<url>http://mvn.hz.netease.com/artifactory/libs-releases</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Netease Maven Repository</name>
+			<url>http://mvn.hz.netease.com/artifactory/libs-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

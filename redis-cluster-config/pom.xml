@@ -11,7 +11,7 @@
   <url>http://maven.apache.org</url>
 
 <properties>
-  	<redis-cluster-common.version>0.0.1-SNAPSHOT</redis-cluster-common.version>
+  	<redis-cluster-common.version>0.0.1</redis-cluster-common.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
