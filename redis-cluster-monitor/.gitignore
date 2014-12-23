@@ -2,6 +2,7 @@
 /bin
 /src/main/webapp/WEB-INF/classes
 /src/main/webapp/WEB-INF/lib
+/src/main/webapp/monitor
 /.settings
 .project
 .classpath
