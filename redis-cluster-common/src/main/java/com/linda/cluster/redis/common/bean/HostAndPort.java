@@ -58,6 +58,15 @@ public class HostAndPort {
 		result = prime * result + port;
 		return result;
 	}
+	
+	public void copyFileds(HostAndPort hh){
+		this.master = hh.master;
+		this.host = hh.host;
+		this.port = hh.port;
+		this.alive = hh.alive;
+		this.next = hh.next;
+		this.stat = hh.stat;
+	}
 
 	@Override
 	public boolean equals(Object obj) {

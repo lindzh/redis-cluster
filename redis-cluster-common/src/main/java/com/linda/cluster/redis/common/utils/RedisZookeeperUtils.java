@@ -162,6 +162,42 @@ public class RedisZookeeperUtils {
 		return Collections.emptyList();
 	}
 	
+	public static boolean zkDeleteNode(ZooKeeper zk,int version,String path,CountBean count,RedisNodeDeleteCallback callback){
+		try {
+			zk.delete(path, version);
+			return true;
+		} catch (KeeperException e) {
+			count.incr();
+			if(e instanceof ConnectionLossException){
+				return callback.onConnectionLoss(path, version, count);
+			}else if(e instanceof NoNodeException){
+				return callback.onNodeNotExist(path, version, count);
+			}else{
+				return callback.onZkException(path, version, count);
+			}
+		} catch (InterruptedException e) {
+			
+		}
+		return false;
+	}
+	
+	//base->product->cluster->redisnode->votes->vote
+	public static String getClusterName(String path){
+		String[] strs = path.split("/");
+		if(strs.length>=3){
+			return strs[2];
+		}
+		return null;
+	}
+	
+	public static String getClusterRedisNodeName(String path){
+		String[] strs = path.split("/");
+		if(strs.length>=4){
+			return strs[3];
+		}
+		return null;
+	}
+	
 	public static int getSequenceId(String node,String prefix){
 		String id = node.substring(prefix.length());
 		return Integer.parseInt(id);
