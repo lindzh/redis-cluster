@@ -51,6 +51,13 @@ public class RedisReplicationLinkUtils {
 		return list;
 	}
 	
+	public static void clearLink(Map<String, HostAndPort> monitorNodes){
+		Collection<HostAndPort> values = monitorNodes.values();
+		for(HostAndPort value:values){
+			value.setNext(null);
+		}
+	}
+	
 	/**
 	 * 选举master 节点，生成master slave 链表
 	 * master->slave1->slave2->slave3,redis 解决redis master多个slave节点复制停顿问题
@@ -103,8 +110,25 @@ public class RedisReplicationLinkUtils {
 		List<HostAndPort> aliveSingleNodes = new ArrayList<HostAndPort>();
 		for(HostAndPort alive:aliveNodes){
 			String master = alive.getMaster();
-			HostAndPort masterNode = monitorNodes.get(master);
-			if(master==null||masterNode==null||!masterNode.isAlive()){
+			if(master!=null){
+				HostAndPort masterNode = monitorNodes.get(master);
+				if(masterNode!=null&&masterNode.isAlive()){
+					HostAndPort next = alive.getNext();
+					if(next==null||!next.isAlive()){
+						alive.setNext(null);
+						tail = alive;
+					}
+				}else{
+					alive.setMaster(null);
+					HostAndPort next = alive.getNext();
+					if(next!=null&&next.isAlive()){
+						head = alive;
+					}else{
+						alive.setNext(null);
+						aliveSingleNodes.add(alive);
+					}
+				}
+			}else{
 				alive.setMaster(null);
 				HostAndPort next = alive.getNext();
 				if(next!=null&&next.isAlive()){
@@ -112,12 +136,6 @@ public class RedisReplicationLinkUtils {
 				}else{
 					alive.setNext(null);
 					aliveSingleNodes.add(alive);
-				}
-			}else{
-				HostAndPort next = alive.getNext();
-				if(next==null||!next.isAlive()){
-					alive.setNext(null);
-					tail = alive;
 				}
 			}
 		}
@@ -156,7 +174,9 @@ public class RedisReplicationLinkUtils {
 				if(head!=nowMaster){
 					String master = nowMaster.getMaster();
 					nowMaster.setMaster(null);
-					monitorNodes.get(master).setNext(null);
+					if(master!=null){
+						monitorNodes.get(master).setNext(null);
+					}
 					head.setMaster(tail.getName());
 					tail.setNext(head);
 				}

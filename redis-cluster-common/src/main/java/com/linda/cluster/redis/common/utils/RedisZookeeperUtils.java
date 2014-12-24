@@ -186,7 +186,7 @@ public class RedisZookeeperUtils {
 	public static String getClusterName(String path){
 		String[] strs = path.split("/");
 		if(strs.length>=3){
-			return strs[2];
+			return strs[3];
 		}
 		return null;
 	}
@@ -194,7 +194,7 @@ public class RedisZookeeperUtils {
 	public static String getClusterRedisNodeName(String path){
 		String[] strs = path.split("/");
 		if(strs.length>=4){
-			return strs[3];
+			return strs[4];
 		}
 		return null;
 	}

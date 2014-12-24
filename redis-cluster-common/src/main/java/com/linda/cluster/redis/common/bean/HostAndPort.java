@@ -64,7 +64,6 @@ public class HostAndPort {
 		this.host = hh.host;
 		this.port = hh.port;
 		this.alive = hh.alive;
-		this.next = hh.next;
 		this.stat = hh.stat;
 	}
 
