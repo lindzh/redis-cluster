@@ -110,7 +110,8 @@ public class RedisZookeeperUtils {
 	public static RedisZkData zkGetNodeData(ZooKeeper zk,Watcher watcher,String path,byte[] data,CountBean count,RedisGetNodeDataCallback callback){
 		RedisZkData zkdata = new RedisZkData();
 		try {
-			zk.getData(path, watcher,  zkdata.getStat());
+			byte[] dd = zk.getData(path, watcher,  zkdata.getStat());
+			zkdata.setData(dd);
 			return zkdata;
 		} catch (KeeperException e) {
 			count.incr();

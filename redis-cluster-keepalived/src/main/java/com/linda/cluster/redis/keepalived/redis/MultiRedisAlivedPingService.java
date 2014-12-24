@@ -1,4 +1,4 @@
-			package com.linda.cluster.redis.keepalived.redis;
+package com.linda.cluster.redis.keepalived.redis;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -63,6 +63,7 @@ public class MultiRedisAlivedPingService implements Service,Runnable{
 
 	@Override
 	public void run() {
+		logger.info("redis ping thread start");
 		while(!stop.get()){
 			for(RedisAliveBase node:redisNodes){
 				try{

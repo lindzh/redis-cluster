@@ -10,4 +10,5 @@ public interface RedisAlivedListener {
 	
 	public void onInfo(RedisAliveBase redis,String info);
 
+	public void onPing(RedisAliveBase redis);
 }

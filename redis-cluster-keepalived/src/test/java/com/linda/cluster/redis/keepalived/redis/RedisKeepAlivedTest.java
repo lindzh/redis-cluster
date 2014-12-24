@@ -29,6 +29,11 @@ public class RedisKeepAlivedTest {
 			public void onInfo(RedisAliveBase redis, String info) {
 				System.out.println("info:"+redis.getRedisHost().toString()+" info:"+info);
 			}
+
+			@Override
+			public void onPing(RedisAliveBase redis) {
+				
+			}
 		});
 		alived.startup();
 	}

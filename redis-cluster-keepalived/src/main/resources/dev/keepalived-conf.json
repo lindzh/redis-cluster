@@ -20,11 +20,13 @@
 	"products":[
 		{
 			"zkPassword":"123456",
-			"productName":"yixin12",
+			"productName":"lindzh",
 			"pingInterval":5000,
 			"infoInterval":5000,
 			"clusters":[
-				"yixin12-cluster1"
+				"lindzh-cluster1",
+				"lindzh-cluster2",
+				"lindzh-backup"
 			]
 		}
 	]

@@ -21,6 +21,7 @@ public class RedisKeepAlived extends RedisAliveBase implements Runnable,Service{
 	public void run() {
 		while(!stop.get()){
 			this.ping();
+			super.onPing(this);
 			try {
 				Thread.currentThread().sleep(pingInterval);
 			} catch (InterruptedException e) {
@@ -43,4 +44,5 @@ public class RedisKeepAlived extends RedisAliveBase implements Runnable,Service{
 		pingThread.interrupt();
 		this.close();
 	}
+
 }

@@ -98,4 +98,11 @@ public abstract class RedisAliveBase implements RedisAlivedListener{
 			listener.onInfo(redis, info);
 		}
 	}
+	
+	@Override
+	public void onPing(RedisAliveBase redis) {
+		for(RedisAlivedListener listener:listeners){
+			listener.onPing(redis);
+		}
+	}
 }

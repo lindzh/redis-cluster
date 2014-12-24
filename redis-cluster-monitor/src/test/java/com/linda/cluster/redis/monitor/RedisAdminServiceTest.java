@@ -33,21 +33,21 @@ public class RedisAdminServiceTest extends AbstractSpringBootStrap implements Se
 	
 	@Test
 	public void addProductNode() throws InterruptedException{
-		long productId = 0;
-		long clusterId = 0;
+		long productId = 4;
+		long clusterId = 4;
 		String host = "10.120.151.105";
-		int port = 12301;
+		int port = 12303;
 		
-		Product product = new Product();
-		product.setName("lindzh");
-		Product addp = redisClusterAdminService.addProduct(product);
-		productId = addp.getId();
-		
-		Cluster cluster = new Cluster();
-		cluster.setClusterName("lindzh-cluster1");
-		cluster.setProductId(productId);
-		Cluster addc = redisClusterAdminService.addCluster(cluster);
-		clusterId = addc.getId();
+//		Product product = new Product();
+//		product.setName("lindzh");
+//		Product addp = redisClusterAdminService.addProduct(product);
+//		productId = addp.getId();
+//		
+//		Cluster cluster = new Cluster();
+//		cluster.setClusterName("lindzh-cluster1");
+//		cluster.setProductId(productId);
+//		Cluster addc = redisClusterAdminService.addCluster(cluster);
+//		clusterId = addc.getId();
 		
 		RedisNode node = new RedisNode();
 		node.setProductId(productId);
@@ -59,8 +59,8 @@ public class RedisAdminServiceTest extends AbstractSpringBootStrap implements Se
 		
 		List<Product> list = redisClusterAdminService.getAllProducts(true);
 		System.out.println(JSONUtils.toJson(list));
-		redisMonitor.startMonitor();
-		Thread.currentThread().sleep(1000000L);
+//		redisMonitor.startMonitor();
+//		Thread.currentThread().sleep(1000000L);
 	}
 	
 
