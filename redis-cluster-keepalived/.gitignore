@@ -2,9 +2,15 @@
 /bin
 /src/main/webapp/WEB-INF/classes
 /src/main/webapp/WEB-INF/lib
+/src/main/webapp/keepalived
+/src/main/webapp/keepalived.zip
 /.settings
 .project
 .classpath
 /.idea
 *.iml
 *.eml
+*.log
+*.jar
+*.zip
+*.class

@@ -2,6 +2,8 @@
 /bin
 /src/main/webapp/WEB-INF/classes
 /src/main/webapp/WEB-INF/lib
+/src/main/webapp/monitor
+/src/main/webapp/monitor.zip
 /.settings
 .project
 .classpath
@@ -9,3 +11,6 @@
 *.iml
 *.eml
 *.log
+*.jar
+*.zip
+*.class
