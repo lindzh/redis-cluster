@@ -15,7 +15,7 @@ public class MultiRedisAlivedPingService implements Service,Runnable{
 
 	@Getter
 	@Setter
-	private int interval = 5000;
+	private int interval = 3000;
 	private Thread thread;
 	
 	private AtomicBoolean stop = new AtomicBoolean(false);

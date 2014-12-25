@@ -43,6 +43,7 @@ public class HostAndPort {
 		hostAndPort.port = port;
 		hostAndPort.alive = alive;
 		hostAndPort.master = master;
+		hostAndPort.stat = stat;
 		hostAndPort.next = null;
 		return hostAndPort;
 	}
@@ -60,6 +61,7 @@ public class HostAndPort {
 	}
 	
 	public void copyFileds(HostAndPort hh){
+		this.name = hh.name;
 		this.master = hh.master;
 		this.host = hh.host;
 		this.port = hh.port;

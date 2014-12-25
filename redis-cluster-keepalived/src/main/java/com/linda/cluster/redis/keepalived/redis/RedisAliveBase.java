@@ -20,6 +20,8 @@ public abstract class RedisAliveBase implements RedisAlivedListener{
 	@Getter
 	protected RedisState state = RedisState.INIT;
 	
+	private int failCount = 0;
+	
 	private void init(){
 		jedis = new Jedis(redisHost.getHost(),redisHost.getPort());
 	}
@@ -31,6 +33,7 @@ public abstract class RedisAliveBase implements RedisAlivedListener{
 			jedis.connect();
 			state = RedisState.CONNECTED;
 			this.onConnected(this);
+			failCount = 0;
 		}catch(Exception e){
 			state = RedisState.ERROR;
 			this.onException(this,e);
@@ -41,6 +44,7 @@ public abstract class RedisAliveBase implements RedisAlivedListener{
 		state = RedisState.CLOSE;
 		try{
 			jedis.close();
+			failCount = 0;
 		}catch(Exception e){
 			state = RedisState.ERROR;
 			this.onException(this,e);
@@ -51,18 +55,23 @@ public abstract class RedisAliveBase implements RedisAlivedListener{
 		try{
 			String info = jedis.info();
 			this.onInfo(this, info);
+			failCount = 0;
 		}catch(Exception e){
 			state = RedisState.ERROR;
 			this.onException(this,e);
+			this.connect();
 		}
 	}
 	
 	public void ping(){
 		try{
 			this.jedis.ping();
+			this.onPing(this);
+			failCount = 0;
 		}catch(Exception e){
 			state = RedisState.ERROR;
 			this.onException(this,e);
+			this.connect();
 		}
 	}
 	
@@ -86,10 +95,12 @@ public abstract class RedisAliveBase implements RedisAlivedListener{
 
 	@Override
 	public void onException(RedisAliveBase redis,Exception e) {
-		for(RedisAlivedListener listener:listeners){
-			listener.onException(redis,e);
+		failCount++;
+		if(this.failCount<5){
+			for(RedisAlivedListener listener:listeners){
+				listener.onException(redis,e);
+			}
 		}
-		this.connect();
 	}
 
 	@Override

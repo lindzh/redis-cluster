@@ -156,6 +156,30 @@ public class RedisReplicationLinkUtils {
 		}
 		
 		//调整各节点master属性
+		setLinkMaster(head);
+		//根据现有master节点调整顺序
+		if(bean!=null&&bean.getMaster()!=null){
+			HostAndPort nowMaster = monitorNodes.get(bean.getMaster());
+			if(nowMaster!=null&&nowMaster.isAlive()){
+				if(head!=nowMaster){
+					String master = nowMaster.getMaster();
+					nowMaster.setMaster(null);
+					if(master!=null){
+						monitorNodes.get(master).setNext(null);
+					}
+					if(tail!=null&&tail!=head){
+						head.setMaster(tail.getName());
+						tail.setNext(head);
+					}
+				}
+				head = nowMaster;
+				setLinkMaster(head);
+			}
+		}
+		return head;
+	}
+	
+	public static void setLinkMaster(HostAndPort head){
 		HostAndPort f = head;
 		while(f!=null){
 			HostAndPort next = f.getNext();
@@ -164,28 +188,6 @@ public class RedisReplicationLinkUtils {
 			}
 			f = next;
 		}
-		
-		//根据现有master节点调整顺序
-		if(bean!=null){
-			HostAndPort nowMaster = monitorNodes.get(bean.getMaster());
-			if(nowMaster==null||!nowMaster.isAlive()){
-				return head;
-			}else{
-				if(head!=nowMaster){
-					String master = nowMaster.getMaster();
-					nowMaster.setMaster(null);
-					if(master!=null){
-						monitorNodes.get(master).setNext(null);
-					}
-					head.setMaster(tail.getName());
-					tail.setNext(head);
-				}
-				return nowMaster;
-			}
-		}else{
-			return head;
-		}
-
 	}
 	
 	public static void main(String[] args) {
