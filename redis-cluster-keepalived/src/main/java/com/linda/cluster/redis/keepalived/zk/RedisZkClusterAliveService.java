@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -266,9 +267,21 @@ public class RedisZkClusterAliveService implements Service,RedisAlivedListener{
 			if(monitorId==id){
 				this.isClusterMonitorMaster.set(true);
 				logger.info("monitor master me !!!!!!!!!!!!!!!!!! monitorId:"+monitorId);
+				this.checkMonitorMasterToDoList();
+			}else{
+				this.isClusterMonitorMaster.set(false);
 			}
 		}else{
+			this.isClusterMonitorMaster.set(false);
 			logger.error("get monitor master data null "+master);
+		}
+	}
+	
+	//当节点宕机时，监控master也宕机，此时选举出来的master需要重新调整节点和集群状态
+	private void checkMonitorMasterToDoList(){
+		Set<String> nodes = monitorNodes.keySet();
+		for(String node:nodes){
+			this.shutdownOrStartupNodeByVotes(node);
 		}
 	}
 	
@@ -397,23 +410,31 @@ public class RedisZkClusterAliveService implements Service,RedisAlivedListener{
 			List<HostAndPort> changed = RedisReplicationLinkUtils.getChanged(beforeData, monitorNodes);
 			
 			this.changeRedisNodeData(changed);
-			
-			if(master!=null){
-				if(clusterState==null){
-					clusterState = new ClusterStateBean();
-					clusterState.setAlive(false);
-					clusterState.setMaster("");
-					clusterState.setStat(new Stat());
-				}
-				if(!clusterState.isAlive()||!clusterState.getMaster().equals(master.getName())){
-					clusterState.setAlive(true);
-					clusterState.setMaster(master.getName());
-					logger.info("monitor choose master:"+master.getName()+" "+this.monitorId);
-					byte[] data = RedisZookeeperUtils.getBytes(clusterState);
-					String path = RedisZookeeperUtils.genPath(zkBase,productName,clusterName);
-					RedisZookeeperUtils.zkSetNodeData(zooKeeper, path, clusterState.getStat().getVersion(), data, new CountBean(), redisSetNodeDataCallback);
-				}
-			}
+			//更改集群状态
+			this.changeClusterState(clusterState, master);
+		}
+	}
+	
+	private void changeClusterState(ClusterStateBean clusterState,HostAndPort master){
+		ClusterStateBean oldState = ClusterStateBean.copyState(clusterState);
+		if(clusterState==null){
+			clusterState = new ClusterStateBean();
+			clusterState.setAlive(false);
+			clusterState.setMaster(null);
+			clusterState.setStat(new Stat());
+		}
+		if(master!=null){
+			clusterState.setAlive(true);
+			clusterState.setMaster(master.getName());
+		}else{
+			clusterState.setAlive(false);
+			clusterState.setMaster(null);
+		}
+		if(!clusterState.equals(oldState)){
+			logger.info("change cluster "+clusterName+" state:"+JSONUtils.toJson(clusterState));
+			byte[] data = RedisZookeeperUtils.getBytes(clusterState);
+			String path = RedisZookeeperUtils.genPath(zkBase,productName,clusterName);
+			RedisZookeeperUtils.zkSetNodeData(zooKeeper, path, clusterState.getStat().getVersion(), data, new CountBean(), redisSetNodeDataCallback);
 		}
 	}
 	
