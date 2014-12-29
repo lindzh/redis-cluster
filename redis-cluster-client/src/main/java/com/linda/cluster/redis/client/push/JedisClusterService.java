@@ -1,4 +1,4 @@
-package com.linda.cluster.redis.client;
+package com.linda.cluster.redis.client.push;
 
 import java.lang.reflect.Field;
 import java.util.Collections;
