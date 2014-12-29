@@ -1,5 +1,7 @@
 package com.linda.cluster.redis.aof;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 
 import lombok.Getter;
@@ -63,6 +65,15 @@ public class AofObject {
         writeIndex += len;
     }
     
+    public int write(InputStream ins,int len) throws IOException{
+		ensureCapacity(writeIndex + len);
+		int read = ins.read(buf, writeIndex, len);
+		if(read>0){
+			writeIndex += read;
+		}
+		return read;
+    }
+    
     public void write(byte b[]) {
     	this.write(b, 0, b.length);
     }
@@ -99,7 +110,6 @@ public class AofObject {
 		readIndex += len;
 		return byteBuf;
     }
-    
 
     public byte[] readBytes(){
     	int len = writeIndex-readIndex;
@@ -115,6 +125,7 @@ public class AofObject {
     public void clear(){
     	readIndex = 0;
     	writeIndex = 0;
+    	aofEndIndex = 0;
     }
     
     private AofLen readInt(int idx){

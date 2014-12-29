@@ -1,94 +1,141 @@
 package com.linda.cluster.redis.aof;
 
-import java.io.BufferedReader;
+import java.io.Closeable;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.OutputStream;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import lombok.Data;
+
+import com.linda.cluster.redis.common.sharding.Hashing;
+import com.linda.cluster.redis.common.sharding.Sharding;
 import com.linda.cluster.redis.common.utils.IOUtils;
-import com.linda.cluster.redis.common.utils.JSONUtils;
+import com.linda.cluster.redis.common.utils.TimeUtils;
 
+@Data
 public class RedisAofAnalyzer {
 	
-
-	public static int readCount(BufferedReader reader) throws IOException{
-		int result = 0;
-		char ch = (char)reader.read();
-		if(ch>='0'&&ch<='9'){
-			
+	private List<Sharding> shardings;
+	
+	private Map<Integer,Sharding> shardingCache = new HashMap<Integer,Sharding>();
+	
+	private Hashing hashing;
+	
+	private String shrdingFileBasePath;
+	
+	private int cacheLen = 1024*1024;//1m
+	
+	private String shardingNode;
+	
+	private void initSharding(){
+		for(Sharding sharding:shardings){
+			for(int i=sharding.getFrom();i<=sharding.getTo();i++){
+				Sharding sh = shardingCache.get(i);
+				if(sh!=null){
+					throw new IllegalArgumentException("dumplicate redis sharding config");
+				}
+				shardingCache.put(i, sharding);
+			}
 		}
-		return result;
 	}
 	
-	public static AofObject analyseAof(BufferedReader reader) throws IOException{
-		Set<String> operations = new HashSet<String>();
-		Set<String> keys = new HashSet<String>();
-		String line = reader.readLine();
-		while(line!=null){
-			if(line!=null&&line.length()>0){
-				char ch = line.charAt(0);
-				if(ch=='*'){
-					int len = Integer.parseInt(line.substring(1).trim());
-					int c = 0;
-					while(c<len){
-						//len
-						line = reader.readLine();
-						//arg
-						line = reader.readLine();
-						
-						if(c==0){
-							operations.add(line.trim());
+	
+	public Map<String,String> analyse(InputStream ins,long length){
+		if(ins!=null&&length>0){
+			long readed = 0;
+			this.initSharding();//初始化sharding
+			Map<String, String> fileMap = new HashMap<String,String>();
+			HashMap<String, FileOutputStream> fosMap = new HashMap<String,FileOutputStream>();
+			AofObject aofObject = new AofObject(cacheLen);
+			while(readed<length){
+				try {
+					int read = aofObject.write(ins, cacheLen);
+					if(read>0){
+						readed += read;
+						while(aofObject.HasObject()){
+							String key = aofObject.getKey();
+							if(key!=null){
+								String operation  = aofObject.getOperation();
+								int hash = hashing.hash(key);
+								Sharding sharding = shardingCache.get(hash);
+								if(sharding!=null){
+									OutputStream os = this.getOutputStream(sharding.getNode(), fileMap, fosMap);
+									os.write(aofObject.aofBytes());
+								}else{
+									throw new IllegalArgumentException("redis sharding config an't find for hash:"+hash);	
+								}
+							}else{
+								for(Sharding sharding:shardings){
+									OutputStream os = this.getOutputStream(sharding.getNode(), fileMap, fosMap);
+									os.write(aofObject.aofBytes());
+								}
+							}
 						}
-						
-						if(len>=3&&c==1){
-							keys.add(line);
-						}
-						c++;
 					}
+				} catch (IOException e) {
+					throw new IllegalArgumentException("read ins error");	
+				}finally{
+					Collection<FileOutputStream> streams = fosMap.values();
+					this.closeStreams(streams);
+					fosMap.clear();
 				}
 			}
-			line = reader.readLine();
+			return fileMap;
 		}
-		
-		System.out.println("operations:"+JSONUtils.toJson(operations));
-		
-		System.out.println("keys:"+JSONUtils.toJson(keys));
-		
 		return null;
 	}
 	
-	public static void main(String[] args) throws IOException {
-		File aofFile = new File("E:\\redis-aof.aof");
-		InputStream fis = IOUtils.getFileInputStream(aofFile.getAbsolutePath());
-		File file = new File("E:\\redis-aof.backup");
-		if(file.exists()){
-			file.delete();
-			file.createNewFile();
-		}
-		FileOutputStream fos = new FileOutputStream(file);
-		int len = 1024*1024;
-		AofObject aof = new AofObject(len);
-		long fidx = 0;
-		long flen = aofFile.length();
-		byte[] buf = new byte[len];
-		while(fidx<flen){
-			int read = fis.read(buf,0,buf.length);
-			if(read>0){
-				fidx+=read;
-				aof.write(buf,0,read);
-				while(aof.HasObject()){
-					System.out.println(aof.getKey());
-					System.out.println(aof.getOperation());
-					System.out.println("----------------------------");
-					fos.write(aof.aofBytes());
-				}
+	private <T extends Closeable> void closeStreams(Collection<T> streams){
+		for(T stream:streams){
+			try {
+				stream.close();
+			} catch (IOException e) {
 			}
 		}
-		fos.close();
-		fis.close();
+	}
+	
+	@SuppressWarnings({ "unused", "resource" })
+	private OutputStream getOutputStream(String nodeName,Map<String, String> fileMap,Map<String, FileOutputStream> fosMap) throws IOException{
+		FileOutputStream fos = null;
+		String nodeFile = fileMap.get(nodeName);
+		if(nodeFile==null){
+			String time = TimeUtils.toSimpleMinuteTime(System.currentTimeMillis());
+			String filename = shardingNode+".sharding."+nodeName+"."+time+".aof";
+			File file = new File(this.shrdingFileBasePath+File.separator+filename);
+			file.createNewFile();
+			fileMap.put(nodeName, file.getAbsolutePath());
+			fos = new FileOutputStream(file);
+			fosMap.put(file.getAbsolutePath(), fos);
+			return fos;
+		}else{
+			fos = fosMap.get(nodeFile);
+			return fos;
+		}
+	}
+	
+	public Map<String,String> analyse(String filename){
+		File file = new File(filename);
+		if(file.exists()){
+			try {
+				FileInputStream fis = new FileInputStream(file);
+				try{
+					Map<String, String> result = this.analyse(fis,file.length());
+					return result;
+				}finally{
+					IOUtils.closeInputStream(fis);
+				}
+			} catch (FileNotFoundException e) {
+				throw new IllegalArgumentException("FileNotFoundException : "+filename);
+			}
+		}
+		return null;
 	}
 }
