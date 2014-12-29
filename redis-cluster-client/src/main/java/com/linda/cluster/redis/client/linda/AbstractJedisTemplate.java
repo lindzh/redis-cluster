@@ -19,17 +19,17 @@ import com.linda.cluster.redis.client.RedisResult;
 
 public abstract class AbstractJedisTemplate implements BinaryJedisCommands,JedisCommands{
 	
-	public abstract Jedis getResource(final String key);
+	protected abstract Jedis getResource(final String key);
 	
-	public abstract void returnResource(final String key,Jedis jedis);
+	protected abstract void returnResource(final String key,Jedis jedis);
 	
-	public abstract void returnBrokenResource(final String key,Jedis jedis);
+	protected abstract void returnBrokenResource(final String key,Jedis jedis);
 	
-	public abstract Jedis getResource(final byte[] key);
+	protected abstract Jedis getResource(final byte[] key);
 	
-	public abstract void returnResource(final byte[] key,Jedis jedis);
+	protected abstract void returnResource(final byte[] key,Jedis jedis);
 	
-	public abstract void returnBrokenResource(final byte[] key,Jedis jedis);
+	protected abstract void returnBrokenResource(final byte[] key,Jedis jedis);
 	
 	private Object executeForResult(final String key,RedisCallback callback){
 		Jedis jedis = this.getResource(key);
