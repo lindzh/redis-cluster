@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.linda.cluster.redis.common.bean.HostAndPort;
-import com.linda.cluster.redis.keepalived.utils.RedisZkUtils;
+import com.linda.cluster.redis.common.utils.RedisZookeeperUtils;
 
 public class SimpleRedisAliveNode extends RedisAliveBase{
 	
@@ -32,7 +32,7 @@ public class SimpleRedisAliveNode extends RedisAliveBase{
 		List<HostAndPort> slaves = new ArrayList<HostAndPort>();
 		try{
 			String info = jedis.info();
-			return RedisZkUtils.getSlaves(info);
+			return RedisZookeeperUtils.getSlaves(info);
 		}catch(Exception e){
 			super.onException(this, e);
 		}

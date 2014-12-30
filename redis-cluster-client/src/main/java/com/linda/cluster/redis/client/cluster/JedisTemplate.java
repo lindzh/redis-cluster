@@ -1,4 +1,4 @@
-package com.linda.cluster.redis.client.linda;
+package com.linda.cluster.redis.client.cluster;
 
 import java.util.Collection;
 import java.util.List;
@@ -21,46 +21,36 @@ public abstract class JedisTemplate implements BinaryJedisCommands,JedisCommands
 	
 	protected abstract Jedis getResource(final String key);
 	
-	protected abstract void returnResource(final String key,Jedis jedis);
+	protected abstract void returnResource(Jedis jedis);
 	
-	protected abstract void returnBrokenResource(final String key,Jedis jedis);
+	protected abstract void returnBrokenResource(Jedis jedis);
 	
 	protected abstract Jedis getResource(final byte[] key);
 	
-	protected abstract void returnResource(final byte[] key,Jedis jedis);
-	
-	protected abstract void returnBrokenResource(final byte[] key,Jedis jedis);
-	
 	public abstract void close();
 	
-	private Object executeForResult(final String key,RedisCallback callback){
-		Jedis jedis = this.getResource(key);
+	private Object doExecute(Jedis jedis,RedisCallback callback){
 		if(jedis==null){
 			return null;
 		}
 		RedisResult result = new RedisResult();
 		try{
 			callback.callback(jedis, result);
-			this.returnResource(key, jedis);
+			this.returnResource(jedis);
 		}catch(Exception e){
-			this.returnBrokenResource(key, jedis);
+			this.returnBrokenResource(jedis);
 		}
 		return result.getValue();
 	}
 	
+	private Object executeForResult(final String key,RedisCallback callback){
+		Jedis jedis = this.getResource(key);
+		return this.doExecute(jedis, callback);
+	}
+	
 	private Object executeForResult(final byte[] key,RedisCallback callback){
 		Jedis jedis = this.getResource(key);
-		if(jedis==null){
-			return null;
-		}
-		RedisResult result = new RedisResult();
-		try{
-			callback.callback(jedis, result);
-			this.returnResource(key, jedis);
-		}catch(Exception e){
-			this.returnBrokenResource(key, jedis);
-		}
-		return result.getValue();
+		return this.doExecute(jedis, callback);
 	}
 	
 	public String set(final String key, final String value) {

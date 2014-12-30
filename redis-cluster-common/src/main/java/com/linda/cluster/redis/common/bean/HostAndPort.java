@@ -35,6 +35,11 @@ public class HostAndPort {
 	@Setter
 	@JsonIgnore
 	private Stat stat;
+	
+	public HostAndPort(String host,int port){
+		this.host = host;
+		this.port = port;
+	}
 
 	public Object clone() throws CloneNotSupportedException {
 		HostAndPort hostAndPort = new HostAndPort();

@@ -11,9 +11,9 @@ import org.apache.zookeeper.ZooKeeper;
 import com.linda.cluster.redis.common.bean.HostAndPort;
 import com.linda.cluster.redis.common.utils.IOUtils;
 import com.linda.cluster.redis.common.utils.JSONUtils;
+import com.linda.cluster.redis.common.utils.RedisZookeeperUtils;
 import com.linda.cluster.redis.keepalived.conf.RedisProduct;
 import com.linda.cluster.redis.keepalived.conf.RedisZkConf;
-import com.linda.cluster.redis.keepalived.utils.RedisZkUtils;
 import com.linda.cluster.redis.keepalived.zk.RedisZkClusterAliveService;
 
 public class RedisKeepAliveStartup {
@@ -37,7 +37,7 @@ public class RedisKeepAliveStartup {
 			String base = zkConf.getZkBasePath();
 			List<RedisProduct> products = zkConf.getProducts();
 			List<HostAndPort> zkhosts = zkConf.getZkhosts();
-			String server = RedisZkUtils.toString(zkhosts);	
+			String server = RedisZookeeperUtils.toString(zkhosts);	
 			Object sync = new Object();
 			logger.info("start to connect to zk service");
 			ZooKeeper keeper = new ZooKeeper(server,10000,new AlivedWatcher(sync));

@@ -1,4 +1,4 @@
-package com.linda.cluster.redis.client.linda;
+package com.linda.cluster.redis.client.cluster;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -43,28 +43,18 @@ public class SimpleJedisTemplate extends JedisTemplate{
 	}
 
 	@Override
-	protected void returnResource(String key, Jedis jedis) {
+	protected void returnResource(Jedis jedis) {
 		jedisPool.returnResource(jedis);
 	}
 
 	@Override
-	protected void returnBrokenResource(String key, Jedis jedis) {
+	protected void returnBrokenResource(Jedis jedis) {
 		jedisPool.returnBrokenResource(jedis);
 	}
 
 	@Override
 	protected Jedis getResource(byte[] key) {
 		return jedisPool.getResource();
-	}
-
-	@Override
-	protected void returnResource(byte[] key, Jedis jedis) {
-		jedisPool.returnResource(jedis);
-	}
-
-	@Override
-	protected void returnBrokenResource(byte[] key, Jedis jedis) {
-		jedisPool.returnBrokenResource(jedis);
 	}
 
 	@Override

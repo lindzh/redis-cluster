@@ -1,5 +1,7 @@
 package com.linda.cluster.redis.client.utils;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import redis.clients.jedis.HostAndPort;
@@ -33,6 +35,16 @@ public class RedisUtils {
 		}else{
 			return false;
 		}
+	}
+	
+	public static List<String> getAListNotInBList(Collection<String> a,Collection<String> b){
+		List<String> list = new ArrayList<String>();
+		for(String s:a){
+			if(!b.contains(s)){
+				list.add(s);
+			}
+		}
+		return list;
 	}
 	
 }

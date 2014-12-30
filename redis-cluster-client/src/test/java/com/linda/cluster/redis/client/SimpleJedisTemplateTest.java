@@ -1,7 +1,7 @@
 package com.linda.cluster.redis.client;
 
-import com.linda.cluster.redis.client.linda.JedisTemplate;
-import com.linda.cluster.redis.client.linda.SimpleJedisTemplate;
+import com.linda.cluster.redis.client.cluster.JedisTemplate;
+import com.linda.cluster.redis.client.cluster.SimpleJedisTemplate;
 
 public class SimpleJedisTemplateTest {
 	
