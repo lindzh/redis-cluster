@@ -10,13 +10,13 @@ import org.apache.zookeeper.data.Stat;
 import com.linda.cluster.redis.common.bean.ClusterStateBean;
 import com.linda.cluster.redis.common.bean.CountBean;
 import com.linda.cluster.redis.common.bean.HostAndPort;
+import com.linda.cluster.redis.common.bean.RedisProductDataBean;
 import com.linda.cluster.redis.common.bean.RedisZkData;
 import com.linda.cluster.redis.common.constant.RedisZkNodeConstant;
 import com.linda.cluster.redis.common.utils.RedisGetNodeDataCallback;
 import com.linda.cluster.redis.common.utils.RedisSetNodeDataCallback;
 import com.linda.cluster.redis.common.utils.RedisZookeeperUtils;
 import com.linda.cluster.redis.common.utils.ZkNodeCreateCallback;
-import com.linda.cluster.redis.config.config.RedisProductDataBean;
 import com.linda.cluster.redis.config.config.RedisZkConfig;
 
 @Data

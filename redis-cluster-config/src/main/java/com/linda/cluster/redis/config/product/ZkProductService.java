@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.apache.zookeeper.ZooKeeper;
 
-import com.linda.cluster.redis.config.sharding.Sharding;
+import com.linda.cluster.redis.common.sharding.Sharding;
+
 
 public class ZkProductService {
 	

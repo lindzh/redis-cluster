@@ -11,11 +11,11 @@ import org.apache.zookeeper.ZooKeeper;
 
 import com.linda.cluster.redis.common.bean.ClusterStateBean;
 import com.linda.cluster.redis.common.bean.HostAndPort;
+import com.linda.cluster.redis.common.bean.RedisProductDataBean;
+import com.linda.cluster.redis.common.sharding.Sharding;
 import com.linda.cluster.redis.common.utils.IOUtils;
 import com.linda.cluster.redis.common.utils.JSONUtils;
-import com.linda.cluster.redis.config.config.RedisProductDataBean;
 import com.linda.cluster.redis.config.config.RedisZkConfig;
-import com.linda.cluster.redis.config.sharding.Sharding;
 
 public class RedisAdminTestService {
 	
