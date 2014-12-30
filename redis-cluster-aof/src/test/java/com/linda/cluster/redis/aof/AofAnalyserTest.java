@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.linda.cluster.redis.common.sharding.CRC16Hashing;
+import redis.clients.util.Hashing;
+
 import com.linda.cluster.redis.common.sharding.Sharding;
 
 public class AofAnalyserTest {
@@ -14,7 +15,7 @@ public class AofAnalyserTest {
 	public static void main(String[] args) throws IOException {
 		File aofFile = new File("E:\\redis-aof.aof");
 		RedisAofAnalyzer aofAnalyzer = new RedisAofAnalyzer();
-		aofAnalyzer.setHashing(new CRC16Hashing());
+		aofAnalyzer.setHashing(Hashing.MD5);
 		aofAnalyzer.setShardingNode("node-33");
 		aofAnalyzer.setShrdingFileBasePath("E:\\aof");
 		List<Sharding> shardings = new ArrayList<Sharding>();

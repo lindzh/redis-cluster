@@ -14,10 +14,11 @@ import java.util.List;
 import java.util.Map;
 
 import lombok.Data;
+import redis.clients.util.Hashing;
 
-import com.linda.cluster.redis.common.sharding.Hashing;
 import com.linda.cluster.redis.common.sharding.Sharding;
 import com.linda.cluster.redis.common.utils.IOUtils;
+import com.linda.cluster.redis.common.utils.SlotUtils;
 import com.linda.cluster.redis.common.utils.TimeUtils;
 
 @Data
@@ -27,7 +28,7 @@ public class RedisAofAnalyzer {
 	
 	private Map<Integer,Sharding> shardingCache = new HashMap<Integer,Sharding>();
 	
-	private Hashing hashing;
+	private Hashing hashing = Hashing.MD5;
 	
 	private String shrdingFileBasePath;
 	
@@ -64,8 +65,9 @@ public class RedisAofAnalyzer {
 							String key = aofObject.getKey();
 							if(key!=null){
 								String operation  = aofObject.getOperation();
-								int hash = hashing.hash(key);
-								Sharding sharding = shardingCache.get(hash);
+								long hash = hashing.hash(key);
+								int slot = SlotUtils.slot(hash);
+								Sharding sharding = shardingCache.get(slot);
 								if(sharding!=null){
 									OutputStream os = this.getOutputStream(sharding.getNode(), fileMap, fosMap);
 									os.write(aofObject.aofBytes());

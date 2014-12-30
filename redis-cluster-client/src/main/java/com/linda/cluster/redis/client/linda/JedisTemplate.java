@@ -17,7 +17,7 @@ import redis.clients.jedis.Tuple;
 import com.linda.cluster.redis.client.RedisCallback;
 import com.linda.cluster.redis.client.RedisResult;
 
-public abstract class AbstractJedisTemplate implements BinaryJedisCommands,JedisCommands{
+public abstract class JedisTemplate implements BinaryJedisCommands,JedisCommands{
 	
 	protected abstract Jedis getResource(final String key);
 	
@@ -30,6 +30,8 @@ public abstract class AbstractJedisTemplate implements BinaryJedisCommands,Jedis
 	protected abstract void returnResource(final byte[] key,Jedis jedis);
 	
 	protected abstract void returnBrokenResource(final byte[] key,Jedis jedis);
+	
+	public abstract void close();
 	
 	private Object executeForResult(final String key,RedisCallback callback){
 		Jedis jedis = this.getResource(key);
