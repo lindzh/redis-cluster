@@ -45,14 +45,20 @@ public class RedisAdminYixin12Service {
 			ArrayList<Sharding> shardings = new ArrayList<Sharding>();
 			Sharding shard1 = new Sharding();
 			shard1.setFrom(0);
-			shard1.setTo(255);
+			shard1.setTo(127);
 			shard1.setNode("yixin12-cluster1");
+			Sharding shard2 = new Sharding();
+			shard2.setFrom(128);
+			shard2.setTo(255);
+			shard2.setNode("yixin12-cluster2");
 			shardings.add(shard1);
+			shardings.add(shard2);
 			productData.setSharding(shardings);
 			productData.setBackup(null);
 			boolean addProductResult = adminService.addOrUpdateProduct("yixin12", productData);
 			logger.info("add product yixin12 result:"+addProductResult);
 			
+			//================================cluster1======================================================
 			ClusterStateBean cluster1State = new ClusterStateBean();
 			cluster1State.setAlive(false);
 			cluster1State.setMaster("node-12301");
@@ -84,7 +90,41 @@ public class RedisAdminYixin12Service {
 			cluster1Node3.setMaster("node-12302");
 			boolean cluster1Node3Result = adminService.addOrUpdateRedisNode("yixin12", "yixin12-cluster1", "node-12303", cluster1Node3);
 			logger.info("add redis node cluster1-node3 result:"+cluster1Node3Result);
-	
+			
+			//==================================end cluster1=====================================================
+			
+			ClusterStateBean cluster2State = new ClusterStateBean();
+			cluster2State.setAlive(false);
+			cluster2State.setMaster("node-12401");
+			boolean addCluster2 = adminService.addOrUpdateCluster("yixin12", "yixin12-cluster2", cluster1State);
+			logger.info("add cluster yixin12 yixin12-cluster2 result:"+addCluster2);
+			
+			HostAndPort cluster2Node1 = new HostAndPort();
+			cluster2Node1.setAlive(false);
+			cluster2Node1.setHost("10.120.151.105");
+			cluster2Node1.setPort(12401);
+			cluster2Node1.setName("node-12401");
+			boolean cluster2Node1Result = adminService.addOrUpdateRedisNode("yixin12", "yixin12-cluster2", "node-12401", cluster2Node1);
+			logger.info("add redis node node-12301 result:"+cluster2Node1Result);
+			
+			HostAndPort cluster2Node2 = new HostAndPort();
+			cluster2Node2.setAlive(false);
+			cluster2Node2.setHost("10.120.151.105");
+			cluster2Node2.setPort(12402);
+			cluster2Node2.setName("node-12402");
+			cluster2Node2.setMaster("node-12401");
+			boolean cluster2Node2Result = adminService.addOrUpdateRedisNode("yixin12", "yixin12-cluster2", "node-12402", cluster2Node2);
+			logger.info("add redis node cluster1-node2 result:"+cluster2Node2Result);
+			
+			HostAndPort cluster2Node3 = new HostAndPort();
+			cluster2Node3.setAlive(false);
+			cluster2Node3.setHost("10.120.151.105");
+			cluster2Node3.setPort(12403);
+			cluster2Node3.setName("node-12403");
+			cluster2Node3.setMaster("node-12402");
+			boolean cluster2Node3Result = adminService.addOrUpdateRedisNode("yixin12", "yixin12-cluster2", "node-12403", cluster2Node3);
+			logger.info("add redis node cluster1-node3 result:"+cluster2Node3Result);
+			
 			logger.info("create products cluster nodes success");
 		} catch (IOException e) {
 			e.printStackTrace();

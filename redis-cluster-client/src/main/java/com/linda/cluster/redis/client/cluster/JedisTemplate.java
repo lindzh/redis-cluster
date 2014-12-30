@@ -16,6 +16,7 @@ import redis.clients.jedis.Tuple;
 
 import com.linda.cluster.redis.client.RedisCallback;
 import com.linda.cluster.redis.client.RedisResult;
+import com.linda.cluster.redis.client.exception.ClusterExceptionHandler;
 
 public abstract class JedisTemplate implements BinaryJedisCommands,JedisCommands{
 	
@@ -29,6 +30,16 @@ public abstract class JedisTemplate implements BinaryJedisCommands,JedisCommands
 	
 	public abstract void close();
 	
+	private ClusterExceptionHandler exceptionHandler;
+	
+	public ClusterExceptionHandler getExceptionHandler() {
+		return exceptionHandler;
+	}
+
+	public void setExceptionHandler(ClusterExceptionHandler exceptionHandler) {
+		this.exceptionHandler = exceptionHandler;
+	}
+
 	private Object doExecute(Jedis jedis,RedisCallback callback){
 		if(jedis==null){
 			return null;
@@ -38,6 +49,9 @@ public abstract class JedisTemplate implements BinaryJedisCommands,JedisCommands
 			callback.callback(jedis, result);
 			this.returnResource(jedis);
 		}catch(Exception e){
+			if(this.exceptionHandler!=null){
+				exceptionHandler.handleException(jedis, e);
+			}
 			this.returnBrokenResource(jedis);
 		}
 		return result.getValue();

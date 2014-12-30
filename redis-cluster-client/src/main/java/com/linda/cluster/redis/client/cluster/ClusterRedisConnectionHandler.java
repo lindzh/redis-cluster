@@ -73,7 +73,6 @@ public class ClusterRedisConnectionHandler extends AbstractClusterConnectionHand
 	}
 	
 	private void init(){
-
 		String zkServers = RedisZookeeperUtils.toString(zkhosts);
 		logger.info("start zk connect:"+zkServers);
 		try {
@@ -88,7 +87,7 @@ public class ClusterRedisConnectionHandler extends AbstractClusterConnectionHand
 		} catch (InterruptedException e) {
 			throw new IllegalArgumentException("redis zk service stop by interrupt:"+e.getMessage());
 		}
-	
+		logger.info("load configs success");
 	}
 	
 	public void close(){
@@ -231,6 +230,7 @@ public class ClusterRedisConnectionHandler extends AbstractClusterConnectionHand
 						String hostAndPortJson = new String(redisNodeData.getData());
 						HostAndPort hostAndPort = JSONUtils.fromJson(hostAndPortJson, HostAndPort.class);
 						if(hostAndPort!=null&&hostAndPort.isAlive()){
+							logger.info("load master node cluster:"+cluster+" node:"+hostAndPortJson);
 							this.changeClusterHostAndPort(cluster, hostAndPort);
 						}else{
 							logger.error("cluster master node data state error! cluster:"+cluster+" node:"+master+" data:"+hostAndPortJson);
@@ -300,6 +300,7 @@ public class ClusterRedisConnectionHandler extends AbstractClusterConnectionHand
 		this.getProductClusters();
 		//获取映射表
 		this.getShardingData();
+		
 	}
 
 	@Override

@@ -50,3 +50,398 @@ java.lang.IllegalMonitorStateException
 2014-12-30 17:24:11 9534 [main] (ClusterRedisConnectionHandler.java:223) INFO  - load cluster:yixin12-cluster1 data:{"alive":true,"master":"node-12303"}
 2014-12-30 17:24:12 9754 [main] (ZooKeeper.java:684) INFO  - Session: 0x134a3825ff32004c closed
 2014-12-30 17:24:12 9754 [main-EventThread] (ClientCnxn.java:509) INFO  - EventThread shut down
+2014-12-30 19:38:53 0    [main] (ClusterRedisConnectionHandler.java:78) INFO  - start zk connect:10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003
+2014-12-30 19:38:53 30   [main] (Environment.java:100) INFO  - Client environment:zookeeper.version=3.4.5-1392090, built on 09/30/2012 17:52 GMT
+2014-12-30 19:38:53 30   [main] (Environment.java:100) INFO  - Client environment:host.name=HIH-D-1676
+2014-12-30 19:38:53 30   [main] (Environment.java:100) INFO  - Client environment:java.version=1.7.0
+2014-12-30 19:38:53 30   [main] (Environment.java:100) INFO  - Client environment:java.vendor=Oracle Corporation
+2014-12-30 19:38:53 30   [main] (Environment.java:100) INFO  - Client environment:java.home=C:\Program Files (x86)\Java\jre7
+2014-12-30 19:38:53 30   [main] (Environment.java:100) INFO  - Client environment:java.class.path=D:\work\workspace\redis-cluster\redis-cluster-client\target\test-classes;D:\work\workspace\redis-cluster\redis-cluster-client\target\classes;C:\Users\linda\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\linda\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\work\workspace\redis-cluster\redis-cluster-common\target\classes;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\linda\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\linda\.m2\repository\log4j\log4j\1.2.16\log4j-1.2.16.jar;C:\Users\linda\.m2\repository\redis\clients\jedis\2.4.2\jedis-2.4.2.jar;C:\Users\linda\.m2\repository\org\apache\commons\commons-pool2\2.0\commons-pool2-2.0.jar;C:\Users\linda\.m2\repository\org\apache\zookeeper\zookeeper\3.4.5\zookeeper-3.4.5.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-api\1.6.1\slf4j-api-1.6.1.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-log4j12\1.6.1\slf4j-log4j12-1.6.1.jar;C:\Users\linda\.m2\repository\jline\jline\0.9.94\jline-0.9.94.jar;C:\Users\linda\.m2\repository\org\jboss\netty\netty\3.2.2.Final\netty-3.2.2.Final.jar;C:\Users\linda\.m2\repository\com\alibaba\fastjson\1.1.37\fastjson-1.1.37.jar;C:\Users\linda\.m2\repository\org\projectlombok\lombok\0.10.8\lombok-0.10.8.jar
+2014-12-30 19:38:53 30   [main] (Environment.java:100) INFO  - Client environment:java.library.path=C:\Program Files (x86)\Java\jre7\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\Program Files (x86)\Common Files\NetSarang;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;;C:\Program Files (x86)\Java\jdk1.7.0\bin;D:\ProgramFiles\apache-maven-3.0.5\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Python33;D:\ProgramFiles\sqlite;D:\ProgramFiles\rsync3.1;C:\MinGW\bin;D:\ProgramFiles\gradle-1.12\bin;D:\ProgramFiles\apache-ant-1.9.4\bin;C:\Program Files (x86)\MySQL\MySQL Server 5.0\bin;C:\Program Files\nodejs;D:\ProgramFiles\thrift;C:\Users\linda\AppData\Roaming\npm\node_modules;;C:\Program Files (x86)\Google\Chrome\Application;C:\Program Files (x86)\OpenVPN\bin;D:\eclipse;;.
+2014-12-30 19:38:53 30   [main] (Environment.java:100) INFO  - Client environment:java.io.tmpdir=C:\Users\linda\AppData\Local\Temp\
+2014-12-30 19:38:53 40   [main] (Environment.java:100) INFO  - Client environment:java.compiler=<NA>
+2014-12-30 19:38:53 40   [main] (Environment.java:100) INFO  - Client environment:os.name=Windows 7
+2014-12-30 19:38:53 40   [main] (Environment.java:100) INFO  - Client environment:os.arch=x86
+2014-12-30 19:38:53 40   [main] (Environment.java:100) INFO  - Client environment:os.version=6.1
+2014-12-30 19:38:53 40   [main] (Environment.java:100) INFO  - Client environment:user.name=linda
+2014-12-30 19:38:53 40   [main] (Environment.java:100) INFO  - Client environment:user.home=C:\Users\linda
+2014-12-30 19:38:53 40   [main] (Environment.java:100) INFO  - Client environment:user.dir=D:\work\workspace\redis-cluster\redis-cluster-client
+2014-12-30 19:38:53 40   [main] (ZooKeeper.java:438) INFO  - Initiating client connection, connectString=10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003 sessionTimeout=10000 watcher=com.linda.cluster.redis.client.cluster.ClusterRedisConnectionHandler@17e53c9
+2014-12-30 19:39:02 9079 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:966) INFO  - Opening socket connection to server 10.120.151.105/10.120.151.105:10002. Will not attempt to authenticate using SASL (unknown error)
+2014-12-30 19:39:02 9079 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:849) INFO  - Socket connection established to 10.120.151.105/10.120.151.105:10002, initiating session
+2014-12-30 19:39:02 9099 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:1207) INFO  - Session establishment complete on server 10.120.151.105/10.120.151.105:10002, sessionid = 0x124a38269e79003a, negotiated timeout = 10000
+2014-12-30 19:39:02 9100 [main] (ClusterRedisConnectionHandler.java:84) INFO  - zk connect finish
+2014-12-30 19:39:02 9100 [main] (ClusterRedisConnectionHandler.java:298) INFO  - start to load product clusters
+2014-12-30 19:39:02 9330 [main] (ClusterRedisConnectionHandler.java:193) INFO  - load clusters:["yixin12-cluster2","yixin12-cluster1"]
+2014-12-30 19:39:02 9340 [main] (ClusterRedisConnectionHandler.java:223) INFO  - load cluster:yixin12-cluster2 data:{"alive":true,"master":"node-12402"}
+2014-12-30 19:39:02 9450 [main] (ClusterRedisConnectionHandler.java:223) INFO  - load cluster:yixin12-cluster1 data:{"alive":true,"master":"node-12302"}
+2014-12-30 19:40:13 0    [main] (ClusterRedisConnectionHandler.java:78) INFO  - start zk connect:10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:zookeeper.version=3.4.5-1392090, built on 09/30/2012 17:52 GMT
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:host.name=HIH-D-1676
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:java.version=1.7.0
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:java.vendor=Oracle Corporation
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:java.home=C:\Program Files (x86)\Java\jre7
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:java.class.path=D:\work\workspace\redis-cluster\redis-cluster-client\target\test-classes;D:\work\workspace\redis-cluster\redis-cluster-client\target\classes;C:\Users\linda\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\linda\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\work\workspace\redis-cluster\redis-cluster-common\target\classes;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\linda\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\linda\.m2\repository\log4j\log4j\1.2.16\log4j-1.2.16.jar;C:\Users\linda\.m2\repository\redis\clients\jedis\2.4.2\jedis-2.4.2.jar;C:\Users\linda\.m2\repository\org\apache\commons\commons-pool2\2.0\commons-pool2-2.0.jar;C:\Users\linda\.m2\repository\org\apache\zookeeper\zookeeper\3.4.5\zookeeper-3.4.5.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-api\1.6.1\slf4j-api-1.6.1.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-log4j12\1.6.1\slf4j-log4j12-1.6.1.jar;C:\Users\linda\.m2\repository\jline\jline\0.9.94\jline-0.9.94.jar;C:\Users\linda\.m2\repository\org\jboss\netty\netty\3.2.2.Final\netty-3.2.2.Final.jar;C:\Users\linda\.m2\repository\com\alibaba\fastjson\1.1.37\fastjson-1.1.37.jar;C:\Users\linda\.m2\repository\org\projectlombok\lombok\0.10.8\lombok-0.10.8.jar
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:java.library.path=C:\Program Files (x86)\Java\jre7\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\Program Files (x86)\Common Files\NetSarang;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;;C:\Program Files (x86)\Java\jdk1.7.0\bin;D:\ProgramFiles\apache-maven-3.0.5\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Python33;D:\ProgramFiles\sqlite;D:\ProgramFiles\rsync3.1;C:\MinGW\bin;D:\ProgramFiles\gradle-1.12\bin;D:\ProgramFiles\apache-ant-1.9.4\bin;C:\Program Files (x86)\MySQL\MySQL Server 5.0\bin;C:\Program Files\nodejs;D:\ProgramFiles\thrift;C:\Users\linda\AppData\Roaming\npm\node_modules;;C:\Program Files (x86)\Google\Chrome\Application;C:\Program Files (x86)\OpenVPN\bin;D:\eclipse;;.
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:java.io.tmpdir=C:\Users\linda\AppData\Local\Temp\
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:java.compiler=<NA>
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:os.name=Windows 7
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:os.arch=x86
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:os.version=6.1
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:user.name=linda
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:user.home=C:\Users\linda
+2014-12-30 19:40:13 40   [main] (Environment.java:100) INFO  - Client environment:user.dir=D:\work\workspace\redis-cluster\redis-cluster-client
+2014-12-30 19:40:13 40   [main] (ZooKeeper.java:438) INFO  - Initiating client connection, connectString=10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003 sessionTimeout=10000 watcher=com.linda.cluster.redis.client.cluster.ClusterRedisConnectionHandler@aee320
+2014-12-30 19:40:23 9089 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:966) INFO  - Opening socket connection to server 10.120.151.105/10.120.151.105:10002. Will not attempt to authenticate using SASL (unknown error)
+2014-12-30 19:40:23 9089 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:849) INFO  - Socket connection established to 10.120.151.105/10.120.151.105:10002, initiating session
+2014-12-30 19:40:23 9099 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:1207) INFO  - Session establishment complete on server 10.120.151.105/10.120.151.105:10002, sessionid = 0x124a38269e79003b, negotiated timeout = 10000
+2014-12-30 19:40:23 9110 [main] (ClusterRedisConnectionHandler.java:84) INFO  - zk connect finish
+2014-12-30 19:40:23 9110 [main] (ClusterRedisConnectionHandler.java:298) INFO  - start to load product clusters
+2014-12-30 19:40:23 9430 [main] (ClusterRedisConnectionHandler.java:193) INFO  - load clusters:["yixin12-cluster2","yixin12-cluster1"]
+2014-12-30 19:40:23 9440 [main] (ClusterRedisConnectionHandler.java:223) INFO  - load cluster:yixin12-cluster2 data:{"alive":true,"master":"node-12402"}
+2014-12-30 19:40:23 9510 [main] (ClusterRedisConnectionHandler.java:223) INFO  - load cluster:yixin12-cluster1 data:{"alive":true,"master":"node-12302"}
+2014-12-30 19:42:05 0    [main] (ClusterRedisConnectionHandler.java:78) INFO  - start zk connect:10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003
+2014-12-30 19:42:05 80   [main] (Environment.java:100) INFO  - Client environment:zookeeper.version=3.4.5-1392090, built on 09/30/2012 17:52 GMT
+2014-12-30 19:42:05 80   [main] (Environment.java:100) INFO  - Client environment:host.name=HIH-D-1676
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:java.version=1.7.0
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:java.vendor=Oracle Corporation
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:java.home=C:\Program Files (x86)\Java\jre7
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:java.class.path=D:\work\workspace\redis-cluster\redis-cluster-client\target\test-classes;D:\work\workspace\redis-cluster\redis-cluster-client\target\classes;C:\Users\linda\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\linda\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\work\workspace\redis-cluster\redis-cluster-common\target\classes;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\linda\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\linda\.m2\repository\log4j\log4j\1.2.16\log4j-1.2.16.jar;C:\Users\linda\.m2\repository\redis\clients\jedis\2.4.2\jedis-2.4.2.jar;C:\Users\linda\.m2\repository\org\apache\commons\commons-pool2\2.0\commons-pool2-2.0.jar;C:\Users\linda\.m2\repository\org\apache\zookeeper\zookeeper\3.4.5\zookeeper-3.4.5.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-api\1.6.1\slf4j-api-1.6.1.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-log4j12\1.6.1\slf4j-log4j12-1.6.1.jar;C:\Users\linda\.m2\repository\jline\jline\0.9.94\jline-0.9.94.jar;C:\Users\linda\.m2\repository\org\jboss\netty\netty\3.2.2.Final\netty-3.2.2.Final.jar;C:\Users\linda\.m2\repository\com\alibaba\fastjson\1.1.37\fastjson-1.1.37.jar;C:\Users\linda\.m2\repository\org\projectlombok\lombok\0.10.8\lombok-0.10.8.jar
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:java.library.path=C:\Program Files (x86)\Java\jre7\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\Program Files (x86)\Common Files\NetSarang;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;;C:\Program Files (x86)\Java\jdk1.7.0\bin;D:\ProgramFiles\apache-maven-3.0.5\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Python33;D:\ProgramFiles\sqlite;D:\ProgramFiles\rsync3.1;C:\MinGW\bin;D:\ProgramFiles\gradle-1.12\bin;D:\ProgramFiles\apache-ant-1.9.4\bin;C:\Program Files (x86)\MySQL\MySQL Server 5.0\bin;C:\Program Files\nodejs;D:\ProgramFiles\thrift;C:\Users\linda\AppData\Roaming\npm\node_modules;;C:\Program Files (x86)\Google\Chrome\Application;C:\Program Files (x86)\OpenVPN\bin;D:\eclipse;;.
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:java.io.tmpdir=C:\Users\linda\AppData\Local\Temp\
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:java.compiler=<NA>
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:os.name=Windows 7
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:os.arch=x86
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:os.version=6.1
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:user.name=linda
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:user.home=C:\Users\linda
+2014-12-30 19:42:05 90   [main] (Environment.java:100) INFO  - Client environment:user.dir=D:\work\workspace\redis-cluster\redis-cluster-client
+2014-12-30 19:42:05 90   [main] (ZooKeeper.java:438) INFO  - Initiating client connection, connectString=10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003 sessionTimeout=10000 watcher=com.linda.cluster.redis.client.cluster.ClusterRedisConnectionHandler@b9b67b
+2014-12-30 19:42:14 9175 [main-SendThread(10.120.151.105:10003)] (ClientCnxn.java:966) INFO  - Opening socket connection to server 10.120.151.105/10.120.151.105:10003. Will not attempt to authenticate using SASL (unknown error)
+2014-12-30 19:42:14 9175 [main-SendThread(10.120.151.105:10003)] (ClientCnxn.java:849) INFO  - Socket connection established to 10.120.151.105/10.120.151.105:10003, initiating session
+2014-12-30 19:42:14 9206 [main-SendThread(10.120.151.105:10003)] (ClientCnxn.java:1207) INFO  - Session establishment complete on server 10.120.151.105/10.120.151.105:10003, sessionid = 0x134a3825ff32004f, negotiated timeout = 10000
+2014-12-30 19:42:14 9206 [main] (ClusterRedisConnectionHandler.java:84) INFO  - zk connect finish
+2014-12-30 19:42:14 9206 [main] (ClusterRedisConnectionHandler.java:299) INFO  - start to load product clusters
+2014-12-30 19:42:15 9436 [main] (ClusterRedisConnectionHandler.java:193) INFO  - load clusters:["yixin12-cluster2","yixin12-cluster1"]
+2014-12-30 19:42:15 9446 [main] (ClusterRedisConnectionHandler.java:223) INFO  - load cluster:yixin12-cluster2 data:{"alive":true,"master":"node-12402"}
+2014-12-30 19:42:15 9476 [main] (ClusterRedisConnectionHandler.java:234) INFO  - load master node cluster:yixin12-cluster2 node:{"name":"node-12402","host":"10.120.151.105","port":12402,"alive":true,"master":null}
+2014-12-30 19:42:15 9536 [main] (ClusterRedisConnectionHandler.java:223) INFO  - load cluster:yixin12-cluster1 data:{"alive":true,"master":"node-12302"}
+2014-12-30 19:42:15 9536 [main] (ClusterRedisConnectionHandler.java:234) INFO  - load master node cluster:yixin12-cluster1 node:{"name":"node-12302","host":"10.120.151.105","port":12302,"alive":true,"master":null}
+2014-12-30 19:44:02 0    [main] (ClusterRedisConnectionHandler.java:77) INFO  - start zk connect:10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:zookeeper.version=3.4.5-1392090, built on 09/30/2012 17:52 GMT
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:host.name=HIH-D-1676
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:java.version=1.7.0
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:java.vendor=Oracle Corporation
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:java.home=C:\Program Files (x86)\Java\jre7
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:java.class.path=D:\work\workspace\redis-cluster\redis-cluster-client\target\test-classes;D:\work\workspace\redis-cluster\redis-cluster-client\target\classes;C:\Users\linda\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\linda\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\work\workspace\redis-cluster\redis-cluster-common\target\classes;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\linda\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\linda\.m2\repository\log4j\log4j\1.2.16\log4j-1.2.16.jar;C:\Users\linda\.m2\repository\redis\clients\jedis\2.4.2\jedis-2.4.2.jar;C:\Users\linda\.m2\repository\org\apache\commons\commons-pool2\2.0\commons-pool2-2.0.jar;C:\Users\linda\.m2\repository\org\apache\zookeeper\zookeeper\3.4.5\zookeeper-3.4.5.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-api\1.6.1\slf4j-api-1.6.1.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-log4j12\1.6.1\slf4j-log4j12-1.6.1.jar;C:\Users\linda\.m2\repository\jline\jline\0.9.94\jline-0.9.94.jar;C:\Users\linda\.m2\repository\org\jboss\netty\netty\3.2.2.Final\netty-3.2.2.Final.jar;C:\Users\linda\.m2\repository\com\alibaba\fastjson\1.1.37\fastjson-1.1.37.jar;C:\Users\linda\.m2\repository\org\projectlombok\lombok\0.10.8\lombok-0.10.8.jar
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:java.library.path=C:\Program Files (x86)\Java\jre7\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\Program Files (x86)\Common Files\NetSarang;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;;C:\Program Files (x86)\Java\jdk1.7.0\bin;D:\ProgramFiles\apache-maven-3.0.5\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Python33;D:\ProgramFiles\sqlite;D:\ProgramFiles\rsync3.1;C:\MinGW\bin;D:\ProgramFiles\gradle-1.12\bin;D:\ProgramFiles\apache-ant-1.9.4\bin;C:\Program Files (x86)\MySQL\MySQL Server 5.0\bin;C:\Program Files\nodejs;D:\ProgramFiles\thrift;C:\Users\linda\AppData\Roaming\npm\node_modules;;C:\Program Files (x86)\Google\Chrome\Application;C:\Program Files (x86)\OpenVPN\bin;D:\eclipse;;.
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:java.io.tmpdir=C:\Users\linda\AppData\Local\Temp\
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:java.compiler=<NA>
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:os.name=Windows 7
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:os.arch=x86
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:os.version=6.1
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:user.name=linda
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:user.home=C:\Users\linda
+2014-12-30 19:44:02 30   [main] (Environment.java:100) INFO  - Client environment:user.dir=D:\work\workspace\redis-cluster\redis-cluster-client
+2014-12-30 19:44:02 40   [main] (ZooKeeper.java:438) INFO  - Initiating client connection, connectString=10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003 sessionTimeout=10000 watcher=com.linda.cluster.redis.client.cluster.ClusterRedisConnectionHandler@b9b67b
+2014-12-30 19:44:11 9076 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:966) INFO  - Opening socket connection to server 10.120.151.105/10.120.151.105:10002. Will not attempt to authenticate using SASL (unknown error)
+2014-12-30 19:44:11 9076 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:849) INFO  - Socket connection established to 10.120.151.105/10.120.151.105:10002, initiating session
+2014-12-30 19:44:11 9086 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:1207) INFO  - Session establishment complete on server 10.120.151.105/10.120.151.105:10002, sessionid = 0x124a38269e79003c, negotiated timeout = 10000
+2014-12-30 19:44:11 9086 [main] (ClusterRedisConnectionHandler.java:83) INFO  - zk connect finish
+2014-12-30 19:44:11 9086 [main] (ClusterRedisConnectionHandler.java:298) INFO  - start to load product clusters
+2014-12-30 19:44:11 9337 [main] (ClusterRedisConnectionHandler.java:192) INFO  - load clusters:["yixin12-cluster2","yixin12-cluster1"]
+2014-12-30 19:44:11 9347 [main] (ClusterRedisConnectionHandler.java:222) INFO  - load cluster:yixin12-cluster2 data:{"alive":true,"master":"node-12402"}
+2014-12-30 19:44:11 9387 [main] (ClusterRedisConnectionHandler.java:233) INFO  - load master node cluster:yixin12-cluster2 node:{"name":"node-12402","host":"10.120.151.105","port":12402,"alive":true,"master":null}
+2014-12-30 19:44:11 9447 [main] (ClusterRedisConnectionHandler.java:222) INFO  - load cluster:yixin12-cluster1 data:{"alive":true,"master":"node-12302"}
+2014-12-30 19:44:11 9457 [main] (ClusterRedisConnectionHandler.java:233) INFO  - load master node cluster:yixin12-cluster1 node:{"name":"node-12302","host":"10.120.151.105","port":12302,"alive":true,"master":null}
+2014-12-30 19:44:11 9467 [main] (ClusterRedisConnectionHandler.java:90) INFO  - load configs success
+2014-12-30 19:44:40 0    [main] (ClusterRedisConnectionHandler.java:77) INFO  - start zk connect:10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:zookeeper.version=3.4.5-1392090, built on 09/30/2012 17:52 GMT
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:host.name=HIH-D-1676
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:java.version=1.7.0
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:java.vendor=Oracle Corporation
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:java.home=C:\Program Files (x86)\Java\jre7
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:java.class.path=D:\work\workspace\redis-cluster\redis-cluster-client\target\test-classes;D:\work\workspace\redis-cluster\redis-cluster-client\target\classes;C:\Users\linda\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\linda\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\work\workspace\redis-cluster\redis-cluster-common\target\classes;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\linda\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\linda\.m2\repository\log4j\log4j\1.2.16\log4j-1.2.16.jar;C:\Users\linda\.m2\repository\redis\clients\jedis\2.4.2\jedis-2.4.2.jar;C:\Users\linda\.m2\repository\org\apache\commons\commons-pool2\2.0\commons-pool2-2.0.jar;C:\Users\linda\.m2\repository\org\apache\zookeeper\zookeeper\3.4.5\zookeeper-3.4.5.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-api\1.6.1\slf4j-api-1.6.1.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-log4j12\1.6.1\slf4j-log4j12-1.6.1.jar;C:\Users\linda\.m2\repository\jline\jline\0.9.94\jline-0.9.94.jar;C:\Users\linda\.m2\repository\org\jboss\netty\netty\3.2.2.Final\netty-3.2.2.Final.jar;C:\Users\linda\.m2\repository\com\alibaba\fastjson\1.1.37\fastjson-1.1.37.jar;C:\Users\linda\.m2\repository\org\projectlombok\lombok\0.10.8\lombok-0.10.8.jar
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:java.library.path=C:\Program Files (x86)\Java\jre7\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\Program Files (x86)\Common Files\NetSarang;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;;C:\Program Files (x86)\Java\jdk1.7.0\bin;D:\ProgramFiles\apache-maven-3.0.5\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Python33;D:\ProgramFiles\sqlite;D:\ProgramFiles\rsync3.1;C:\MinGW\bin;D:\ProgramFiles\gradle-1.12\bin;D:\ProgramFiles\apache-ant-1.9.4\bin;C:\Program Files (x86)\MySQL\MySQL Server 5.0\bin;C:\Program Files\nodejs;D:\ProgramFiles\thrift;C:\Users\linda\AppData\Roaming\npm\node_modules;;C:\Program Files (x86)\Google\Chrome\Application;C:\Program Files (x86)\OpenVPN\bin;D:\eclipse;;.
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:java.io.tmpdir=C:\Users\linda\AppData\Local\Temp\
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:java.compiler=<NA>
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:os.name=Windows 7
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:os.arch=x86
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:os.version=6.1
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:user.name=linda
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:user.home=C:\Users\linda
+2014-12-30 19:44:40 50   [main] (Environment.java:100) INFO  - Client environment:user.dir=D:\work\workspace\redis-cluster\redis-cluster-client
+2014-12-30 19:44:40 50   [main] (ZooKeeper.java:438) INFO  - Initiating client connection, connectString=10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003 sessionTimeout=10000 watcher=com.linda.cluster.redis.client.cluster.ClusterRedisConnectionHandler@1c160cb
+2014-12-30 19:44:49 9086 [main-SendThread(10.120.151.105:10003)] (ClientCnxn.java:966) INFO  - Opening socket connection to server 10.120.151.105/10.120.151.105:10003. Will not attempt to authenticate using SASL (unknown error)
+2014-12-30 19:44:49 9086 [main-SendThread(10.120.151.105:10003)] (ClientCnxn.java:849) INFO  - Socket connection established to 10.120.151.105/10.120.151.105:10003, initiating session
+2014-12-30 19:44:49 9096 [main-SendThread(10.120.151.105:10003)] (ClientCnxn.java:1207) INFO  - Session establishment complete on server 10.120.151.105/10.120.151.105:10003, sessionid = 0x134a3825ff320050, negotiated timeout = 10000
+2014-12-30 19:44:49 9096 [main] (ClusterRedisConnectionHandler.java:83) INFO  - zk connect finish
+2014-12-30 19:44:49 9096 [main] (ClusterRedisConnectionHandler.java:298) INFO  - start to load product clusters
+2014-12-30 19:44:50 9307 [main] (ClusterRedisConnectionHandler.java:192) INFO  - load clusters:["yixin12-cluster2","yixin12-cluster1"]
+2014-12-30 19:44:50 9317 [main] (ClusterRedisConnectionHandler.java:222) INFO  - load cluster:yixin12-cluster2 data:{"alive":true,"master":"node-12402"}
+2014-12-30 19:44:50 9347 [main] (ClusterRedisConnectionHandler.java:233) INFO  - load master node cluster:yixin12-cluster2 node:{"name":"node-12402","host":"10.120.151.105","port":12402,"alive":true,"master":null}
+2014-12-30 19:44:50 9397 [main] (ClusterRedisConnectionHandler.java:222) INFO  - load cluster:yixin12-cluster1 data:{"alive":true,"master":"node-12302"}
+2014-12-30 19:44:50 9397 [main] (ClusterRedisConnectionHandler.java:233) INFO  - load master node cluster:yixin12-cluster1 node:{"name":"node-12302","host":"10.120.151.105","port":12302,"alive":true,"master":null}
+2014-12-30 19:44:50 9407 [main] (ClusterRedisConnectionHandler.java:90) INFO  - load configs success
+2014-12-30 19:44:50 9537 [main] (ZooKeeper.java:684) INFO  - Session: 0x134a3825ff320050 closed
+2014-12-30 19:44:50 9537 [main-EventThread] (ClientCnxn.java:509) INFO  - EventThread shut down
+2014-12-30 19:45:40 0    [main] (ClusterRedisConnectionHandler.java:77) INFO  - start zk connect:10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:zookeeper.version=3.4.5-1392090, built on 09/30/2012 17:52 GMT
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:host.name=HIH-D-1676
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:java.version=1.7.0
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:java.vendor=Oracle Corporation
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:java.home=C:\Program Files (x86)\Java\jre7
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:java.class.path=D:\work\workspace\redis-cluster\redis-cluster-client\target\test-classes;D:\work\workspace\redis-cluster\redis-cluster-client\target\classes;C:\Users\linda\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\linda\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\work\workspace\redis-cluster\redis-cluster-common\target\classes;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\linda\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\linda\.m2\repository\log4j\log4j\1.2.16\log4j-1.2.16.jar;C:\Users\linda\.m2\repository\redis\clients\jedis\2.4.2\jedis-2.4.2.jar;C:\Users\linda\.m2\repository\org\apache\commons\commons-pool2\2.0\commons-pool2-2.0.jar;C:\Users\linda\.m2\repository\org\apache\zookeeper\zookeeper\3.4.5\zookeeper-3.4.5.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-api\1.6.1\slf4j-api-1.6.1.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-log4j12\1.6.1\slf4j-log4j12-1.6.1.jar;C:\Users\linda\.m2\repository\jline\jline\0.9.94\jline-0.9.94.jar;C:\Users\linda\.m2\repository\org\jboss\netty\netty\3.2.2.Final\netty-3.2.2.Final.jar;C:\Users\linda\.m2\repository\com\alibaba\fastjson\1.1.37\fastjson-1.1.37.jar;C:\Users\linda\.m2\repository\org\projectlombok\lombok\0.10.8\lombok-0.10.8.jar
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:java.library.path=C:\Program Files (x86)\Java\jre7\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\Program Files (x86)\Common Files\NetSarang;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;;C:\Program Files (x86)\Java\jdk1.7.0\bin;D:\ProgramFiles\apache-maven-3.0.5\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Python33;D:\ProgramFiles\sqlite;D:\ProgramFiles\rsync3.1;C:\MinGW\bin;D:\ProgramFiles\gradle-1.12\bin;D:\ProgramFiles\apache-ant-1.9.4\bin;C:\Program Files (x86)\MySQL\MySQL Server 5.0\bin;C:\Program Files\nodejs;D:\ProgramFiles\thrift;C:\Users\linda\AppData\Roaming\npm\node_modules;;C:\Program Files (x86)\Google\Chrome\Application;C:\Program Files (x86)\OpenVPN\bin;D:\eclipse;;.
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:java.io.tmpdir=C:\Users\linda\AppData\Local\Temp\
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:java.compiler=<NA>
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:os.name=Windows 7
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:os.arch=x86
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:os.version=6.1
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:user.name=linda
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:user.home=C:\Users\linda
+2014-12-30 19:45:40 40   [main] (Environment.java:100) INFO  - Client environment:user.dir=D:\work\workspace\redis-cluster\redis-cluster-client
+2014-12-30 19:45:40 50   [main] (ZooKeeper.java:438) INFO  - Initiating client connection, connectString=10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003 sessionTimeout=10000 watcher=com.linda.cluster.redis.client.cluster.ClusterRedisConnectionHandler@7b4ed7
+2014-12-30 19:45:49 9092 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:966) INFO  - Opening socket connection to server 10.120.151.105/10.120.151.105:10002. Will not attempt to authenticate using SASL (unknown error)
+2014-12-30 19:45:52 12104 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:849) INFO  - Socket connection established to 10.120.151.105/10.120.151.105:10002, initiating session
+2014-12-30 19:45:52 12125 [main-SendThread(10.120.151.105:10002)] (ClientCnxn.java:1207) INFO  - Session establishment complete on server 10.120.151.105/10.120.151.105:10002, sessionid = 0x124a38269e79003d, negotiated timeout = 10000
+2014-12-30 19:45:52 12125 [main] (ClusterRedisConnectionHandler.java:83) INFO  - zk connect finish
+2014-12-30 19:45:52 12125 [main] (ClusterRedisConnectionHandler.java:298) INFO  - start to load product clusters
+2014-12-30 19:45:52 12385 [main] (ClusterRedisConnectionHandler.java:192) INFO  - load clusters:["yixin12-cluster2","yixin12-cluster1"]
+2014-12-30 19:45:52 12395 [main] (ClusterRedisConnectionHandler.java:222) INFO  - load cluster:yixin12-cluster2 data:{"alive":true,"master":"node-12402"}
+2014-12-30 19:45:53 12435 [main] (ClusterRedisConnectionHandler.java:233) INFO  - load master node cluster:yixin12-cluster2 node:{"name":"node-12402","host":"10.120.151.105","port":12402,"alive":true,"master":null}
+2014-12-30 19:45:53 12485 [main] (ClusterRedisConnectionHandler.java:222) INFO  - load cluster:yixin12-cluster1 data:{"alive":true,"master":"node-12302"}
+2014-12-30 19:45:53 12485 [main] (ClusterRedisConnectionHandler.java:233) INFO  - load master node cluster:yixin12-cluster1 node:{"name":"node-12302","host":"10.120.151.105","port":12302,"alive":true,"master":null}
+2014-12-30 19:45:53 12495 [main] (ClusterRedisConnectionHandler.java:90) INFO  - load configs success
+2014-12-30 19:45:53 12495 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-0 slot:134
+2014-12-30 19:45:53 12525 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-1 slot:112
+2014-12-30 19:45:53 12525 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-2 slot:40
+2014-12-30 19:45:53 12525 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-3 slot:43
+2014-12-30 19:45:53 12535 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-4 slot:245
+2014-12-30 19:45:53 12535 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-5 slot:14
+2014-12-30 19:45:53 12535 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-6 slot:123
+2014-12-30 19:45:53 12535 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-7 slot:105
+2014-12-30 19:45:53 12535 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-8 slot:150
+2014-12-30 19:45:53 12535 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-9 slot:218
+2014-12-30 19:45:53 12535 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-10 slot:2
+2014-12-30 19:45:53 12535 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-11 slot:28
+2014-12-30 19:45:53 12535 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-12 slot:20
+2014-12-30 19:45:53 12535 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-13 slot:107
+2014-12-30 19:45:53 12545 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-14 slot:126
+2014-12-30 19:45:53 12545 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-15 slot:133
+2014-12-30 19:45:53 12545 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-16 slot:94
+2014-12-30 19:45:53 12545 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-17 slot:73
+2014-12-30 19:45:53 12545 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-18 slot:107
+2014-12-30 19:45:53 12545 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-19 slot:141
+2014-12-30 19:45:53 12545 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-20 slot:39
+2014-12-30 19:45:53 12545 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-21 slot:56
+2014-12-30 19:45:53 12545 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-22 slot:116
+2014-12-30 19:45:53 12545 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-23 slot:122
+2014-12-30 19:45:53 12555 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-24 slot:253
+2014-12-30 19:45:53 12555 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-25 slot:97
+2014-12-30 19:45:53 12555 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-26 slot:137
+2014-12-30 19:45:53 12555 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-27 slot:28
+2014-12-30 19:45:53 12555 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-28 slot:168
+2014-12-30 19:45:53 12555 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-29 slot:125
+2014-12-30 19:45:53 12555 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-30 slot:73
+2014-12-30 19:45:53 12555 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-31 slot:113
+2014-12-30 19:45:53 12555 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-32 slot:69
+2014-12-30 19:45:53 12565 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-33 slot:223
+2014-12-30 19:45:53 12565 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-34 slot:41
+2014-12-30 19:45:53 12565 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-35 slot:232
+2014-12-30 19:45:53 12565 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-36 slot:241
+2014-12-30 19:45:53 12565 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-37 slot:35
+2014-12-30 19:45:53 12565 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-38 slot:215
+2014-12-30 19:45:53 12565 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-39 slot:80
+2014-12-30 19:45:53 12565 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-40 slot:242
+2014-12-30 19:45:53 12565 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-41 slot:248
+2014-12-30 19:45:53 12565 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-42 slot:252
+2014-12-30 19:45:53 12565 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-43 slot:156
+2014-12-30 19:45:53 12575 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-44 slot:223
+2014-12-30 19:45:53 12575 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-45 slot:26
+2014-12-30 19:45:53 12575 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-46 slot:37
+2014-12-30 19:45:53 12575 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-47 slot:198
+2014-12-30 19:45:53 12575 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-48 slot:214
+2014-12-30 19:45:53 12575 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-49 slot:87
+2014-12-30 19:45:53 12575 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-50 slot:207
+2014-12-30 19:45:53 12575 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-51 slot:90
+2014-12-30 19:45:53 12575 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-52 slot:56
+2014-12-30 19:45:53 12575 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-53 slot:171
+2014-12-30 19:45:53 12585 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-54 slot:31
+2014-12-30 19:45:53 12585 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-55 slot:245
+2014-12-30 19:45:53 12585 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-56 slot:246
+2014-12-30 19:45:53 12585 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-57 slot:121
+2014-12-30 19:45:53 12585 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-58 slot:222
+2014-12-30 19:45:53 12585 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-59 slot:166
+2014-12-30 19:45:53 12585 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-60 slot:214
+2014-12-30 19:45:53 12585 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-61 slot:194
+2014-12-30 19:45:53 12585 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-62 slot:243
+2014-12-30 19:45:53 12595 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-63 slot:181
+2014-12-30 19:45:53 12595 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-64 slot:116
+2014-12-30 19:45:53 12595 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-65 slot:173
+2014-12-30 19:45:53 12595 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-66 slot:45
+2014-12-30 19:45:53 12595 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-67 slot:31
+2014-12-30 19:45:53 12595 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-68 slot:246
+2014-12-30 19:45:53 12595 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-69 slot:123
+2014-12-30 19:45:53 12595 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-70 slot:78
+2014-12-30 19:45:53 12605 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-71 slot:248
+2014-12-30 19:45:53 12605 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-72 slot:42
+2014-12-30 19:45:53 12605 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-73 slot:107
+2014-12-30 19:45:53 12605 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-74 slot:242
+2014-12-30 19:45:53 12605 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-75 slot:225
+2014-12-30 19:45:53 12605 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-76 slot:163
+2014-12-30 19:45:53 12605 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-77 slot:58
+2014-12-30 19:45:53 12605 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-78 slot:48
+2014-12-30 19:45:53 12605 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-79 slot:119
+2014-12-30 19:45:53 12615 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-80 slot:129
+2014-12-30 19:45:53 12615 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-81 slot:34
+2014-12-30 19:45:53 12615 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-82 slot:36
+2014-12-30 19:45:53 12615 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-83 slot:74
+2014-12-30 19:45:53 12615 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-84 slot:225
+2014-12-30 19:45:53 12615 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-85 slot:202
+2014-12-30 19:45:53 12615 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-86 slot:84
+2014-12-30 19:45:53 12615 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-87 slot:117
+2014-12-30 19:45:53 12615 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-88 slot:28
+2014-12-30 19:45:53 12625 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-89 slot:2
+2014-12-30 19:45:53 12625 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-90 slot:146
+2014-12-30 19:45:53 12625 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-91 slot:86
+2014-12-30 19:45:53 12625 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-92 slot:149
+2014-12-30 19:45:53 12625 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-93 slot:172
+2014-12-30 19:45:53 12625 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-94 slot:124
+2014-12-30 19:45:53 12625 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-95 slot:165
+2014-12-30 19:45:53 12625 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-96 slot:106
+2014-12-30 19:45:53 12635 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-97 slot:169
+2014-12-30 19:45:53 12635 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-98 slot:98
+2014-12-30 19:45:53 12635 [main] (ClusterJedisTemplate.java:39) INFO  - key:test-99 slot:120
+2014-12-30 19:45:53 12635 [main] (ZooKeeper.java:684) INFO  - Session: 0x124a38269e79003d closed
+2014-12-30 19:45:53 12635 [main-EventThread] (ClientCnxn.java:509) INFO  - EventThread shut down
+2014-12-30 20:01:11 0    [main] (ClusterRedisConnectionHandler.java:77) INFO  - start zk connect:10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003
+2014-12-30 20:01:11 30   [main] (Environment.java:100) INFO  - Client environment:zookeeper.version=3.4.5-1392090, built on 09/30/2012 17:52 GMT
+2014-12-30 20:01:11 30   [main] (Environment.java:100) INFO  - Client environment:host.name=HIH-D-1676
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:java.version=1.7.0
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:java.vendor=Oracle Corporation
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:java.home=C:\Program Files (x86)\Java\jre7
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:java.class.path=D:\work\workspace\redis-cluster\redis-cluster-client\target\test-classes;D:\work\workspace\redis-cluster\redis-cluster-client\target\classes;C:\Users\linda\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\linda\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\work\workspace\redis-cluster\redis-cluster-common\target\classes;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\linda\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\linda\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\linda\.m2\repository\log4j\log4j\1.2.16\log4j-1.2.16.jar;C:\Users\linda\.m2\repository\redis\clients\jedis\2.4.2\jedis-2.4.2.jar;C:\Users\linda\.m2\repository\org\apache\commons\commons-pool2\2.0\commons-pool2-2.0.jar;C:\Users\linda\.m2\repository\org\apache\zookeeper\zookeeper\3.4.5\zookeeper-3.4.5.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-api\1.6.1\slf4j-api-1.6.1.jar;C:\Users\linda\.m2\repository\org\slf4j\slf4j-log4j12\1.6.1\slf4j-log4j12-1.6.1.jar;C:\Users\linda\.m2\repository\jline\jline\0.9.94\jline-0.9.94.jar;C:\Users\linda\.m2\repository\org\jboss\netty\netty\3.2.2.Final\netty-3.2.2.Final.jar;C:\Users\linda\.m2\repository\com\alibaba\fastjson\1.1.37\fastjson-1.1.37.jar;C:\Users\linda\.m2\repository\org\projectlombok\lombok\0.10.8\lombok-0.10.8.jar
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:java.library.path=C:\Program Files (x86)\Java\jre7\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;C:\Program Files (x86)\Common Files\NetSarang;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;;C:\Program Files (x86)\Java\jdk1.7.0\bin;D:\ProgramFiles\apache-maven-3.0.5\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Python33;D:\ProgramFiles\sqlite;D:\ProgramFiles\rsync3.1;C:\MinGW\bin;D:\ProgramFiles\gradle-1.12\bin;D:\ProgramFiles\apache-ant-1.9.4\bin;C:\Program Files (x86)\MySQL\MySQL Server 5.0\bin;C:\Program Files\nodejs;D:\ProgramFiles\thrift;C:\Users\linda\AppData\Roaming\npm\node_modules;;C:\Program Files (x86)\Google\Chrome\Application;C:\Program Files (x86)\OpenVPN\bin;D:\eclipse;;.
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:java.io.tmpdir=C:\Users\linda\AppData\Local\Temp\
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:java.compiler=<NA>
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:os.name=Windows 7
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:os.arch=x86
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:os.version=6.1
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:user.name=linda
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:user.home=C:\Users\linda
+2014-12-30 20:01:11 40   [main] (Environment.java:100) INFO  - Client environment:user.dir=D:\work\workspace\redis-cluster\redis-cluster-client
+2014-12-30 20:01:11 40   [main] (ZooKeeper.java:438) INFO  - Initiating client connection, connectString=10.120.151.105:10001,10.120.151.105:10002,10.120.151.105:10003 sessionTimeout=10000 watcher=com.linda.cluster.redis.client.cluster.ClusterRedisConnectionHandler@15dc721
+2014-12-30 20:01:20 9116 [main-SendThread(10.120.151.105:10001)] (ClientCnxn.java:966) INFO  - Opening socket connection to server 10.120.151.105/10.120.151.105:10001. Will not attempt to authenticate using SASL (unknown error)
+2014-12-30 20:01:20 9116 [main-SendThread(10.120.151.105:10001)] (ClientCnxn.java:849) INFO  - Socket connection established to 10.120.151.105/10.120.151.105:10001, initiating session
+2014-12-30 20:01:20 9126 [main-SendThread(10.120.151.105:10001)] (ClientCnxn.java:1207) INFO  - Session establishment complete on server 10.120.151.105/10.120.151.105:10001, sessionid = 0x114a3825ff2a0051, negotiated timeout = 10000
+2014-12-30 20:01:20 9137 [main] (ClusterRedisConnectionHandler.java:83) INFO  - zk connect finish
+2014-12-30 20:01:20 9137 [main] (ClusterRedisConnectionHandler.java:298) INFO  - start to load product clusters
+2014-12-30 20:01:20 9357 [main] (ClusterRedisConnectionHandler.java:192) INFO  - load clusters:["yixin12-cluster2","yixin12-cluster1"]
+2014-12-30 20:01:20 9367 [main] (ClusterRedisConnectionHandler.java:222) INFO  - load cluster:yixin12-cluster2 data:{"alive":true,"master":"node-12402"}
+2014-12-30 20:01:20 9397 [main] (ClusterRedisConnectionHandler.java:233) INFO  - load master node cluster:yixin12-cluster2 node:{"name":"node-12402","host":"10.120.151.105","port":12402,"alive":true,"master":null}
+2014-12-30 20:01:20 9467 [main] (ClusterRedisConnectionHandler.java:222) INFO  - load cluster:yixin12-cluster1 data:{"alive":true,"master":"node-12302"}
+2014-12-30 20:01:20 9467 [main] (ClusterRedisConnectionHandler.java:233) INFO  - load master node cluster:yixin12-cluster1 node:{"name":"node-12302","host":"10.120.151.105","port":12302,"alive":true,"master":null}
+2014-12-30 20:01:20 9477 [main] (ClusterRedisConnectionHandler.java:90) INFO  - load configs success
+2014-12-30 20:01:20 9497 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-100 slot:251 node:10.120.151.105:12402
+2014-12-30 20:01:20 9507 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-101 slot:159 node:10.120.151.105:12402
+2014-12-30 20:01:20 9507 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-102 slot:207 node:10.120.151.105:12402
+2014-12-30 20:01:20 9507 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-103 slot:130 node:10.120.151.105:12402
+2014-12-30 20:01:20 9507 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-104 slot:51 node:10.120.151.105:12302
+2014-12-30 20:01:20 9507 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-105 slot:2 node:10.120.151.105:12302
+2014-12-30 20:01:20 9517 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-106 slot:210 node:10.120.151.105:12402
+2014-12-30 20:01:20 9517 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-107 slot:107 node:10.120.151.105:12302
+2014-12-30 20:01:20 9517 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-108 slot:219 node:10.120.151.105:12402
+2014-12-30 20:01:20 9517 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-109 slot:48 node:10.120.151.105:12302
+2014-12-30 20:01:20 9517 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-110 slot:198 node:10.120.151.105:12402
+2014-12-30 20:01:20 9517 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-111 slot:207 node:10.120.151.105:12402
+2014-12-30 20:01:20 9517 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-112 slot:156 node:10.120.151.105:12402
+2014-12-30 20:01:20 9517 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-113 slot:168 node:10.120.151.105:12402
+2014-12-30 20:01:20 9517 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-114 slot:122 node:10.120.151.105:12302
+2014-12-30 20:01:20 9527 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-115 slot:242 node:10.120.151.105:12402
+2014-12-30 20:01:20 9527 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-116 slot:19 node:10.120.151.105:12302
+2014-12-30 20:01:20 9527 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-117 slot:102 node:10.120.151.105:12302
+2014-12-30 20:01:20 9527 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-118 slot:38 node:10.120.151.105:12302
+2014-12-30 20:01:20 9527 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-119 slot:44 node:10.120.151.105:12302
+2014-12-30 20:01:20 9527 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-120 slot:40 node:10.120.151.105:12302
+2014-12-30 20:01:20 9527 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-121 slot:106 node:10.120.151.105:12302
+2014-12-30 20:01:20 9527 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-122 slot:183 node:10.120.151.105:12402
+2014-12-30 20:01:20 9527 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-123 slot:202 node:10.120.151.105:12402
+2014-12-30 20:01:20 9527 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-124 slot:202 node:10.120.151.105:12402
+2014-12-30 20:01:20 9537 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-125 slot:122 node:10.120.151.105:12302
+2014-12-30 20:01:20 9537 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-126 slot:85 node:10.120.151.105:12302
+2014-12-30 20:01:20 9537 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-127 slot:240 node:10.120.151.105:12402
+2014-12-30 20:01:20 9537 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-128 slot:129 node:10.120.151.105:12402
+2014-12-30 20:01:20 9537 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-129 slot:223 node:10.120.151.105:12402
+2014-12-30 20:01:20 9537 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-130 slot:145 node:10.120.151.105:12402
+2014-12-30 20:01:20 9537 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-131 slot:8 node:10.120.151.105:12302
+2014-12-30 20:01:20 9537 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-132 slot:225 node:10.120.151.105:12402
+2014-12-30 20:01:20 9537 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-133 slot:167 node:10.120.151.105:12402
+2014-12-30 20:01:20 9547 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-134 slot:19 node:10.120.151.105:12302
+2014-12-30 20:01:20 9547 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-135 slot:95 node:10.120.151.105:12302
+2014-12-30 20:01:20 9547 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-136 slot:160 node:10.120.151.105:12402
+2014-12-30 20:01:20 9547 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-137 slot:43 node:10.120.151.105:12302
+2014-12-30 20:01:20 9547 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-138 slot:7 node:10.120.151.105:12302
+2014-12-30 20:01:20 9547 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-139 slot:214 node:10.120.151.105:12402
+2014-12-30 20:01:20 9547 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-140 slot:254 node:10.120.151.105:12402
+2014-12-30 20:01:20 9547 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-141 slot:237 node:10.120.151.105:12402
+2014-12-30 20:01:20 9547 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-142 slot:218 node:10.120.151.105:12402
+2014-12-30 20:01:20 9557 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-143 slot:245 node:10.120.151.105:12402
+2014-12-30 20:01:20 9557 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-144 slot:187 node:10.120.151.105:12402
+2014-12-30 20:01:20 9557 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-145 slot:19 node:10.120.151.105:12302
+2014-12-30 20:01:20 9557 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-146 slot:173 node:10.120.151.105:12402
+2014-12-30 20:01:20 9557 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-147 slot:157 node:10.120.151.105:12402
+2014-12-30 20:01:20 9557 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-148 slot:238 node:10.120.151.105:12402
+2014-12-30 20:01:20 9557 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-149 slot:169 node:10.120.151.105:12402
+2014-12-30 20:01:20 9557 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-150 slot:100 node:10.120.151.105:12302
+2014-12-30 20:01:20 9567 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-151 slot:77 node:10.120.151.105:12302
+2014-12-30 20:01:20 9567 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-152 slot:214 node:10.120.151.105:12402
+2014-12-30 20:01:20 9567 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-153 slot:36 node:10.120.151.105:12302
+2014-12-30 20:01:20 9567 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-154 slot:133 node:10.120.151.105:12402
+2014-12-30 20:01:20 9567 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-155 slot:203 node:10.120.151.105:12402
+2014-12-30 20:01:20 9567 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-156 slot:160 node:10.120.151.105:12402
+2014-12-30 20:01:20 9567 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-157 slot:252 node:10.120.151.105:12402
+2014-12-30 20:01:20 9567 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-158 slot:182 node:10.120.151.105:12402
+2014-12-30 20:01:20 9567 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-159 slot:227 node:10.120.151.105:12402
+2014-12-30 20:01:20 9577 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-160 slot:209 node:10.120.151.105:12402
+2014-12-30 20:01:20 9577 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-161 slot:161 node:10.120.151.105:12402
+2014-12-30 20:01:20 9577 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-162 slot:114 node:10.120.151.105:12302
+2014-12-30 20:01:20 9577 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-163 slot:57 node:10.120.151.105:12302
+2014-12-30 20:01:20 9577 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-164 slot:205 node:10.120.151.105:12402
+2014-12-30 20:01:20 9577 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-165 slot:25 node:10.120.151.105:12302
+2014-12-30 20:01:20 9577 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-166 slot:77 node:10.120.151.105:12302
+2014-12-30 20:01:20 9577 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-167 slot:148 node:10.120.151.105:12402
+2014-12-30 20:01:20 9587 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-168 slot:62 node:10.120.151.105:12302
+2014-12-30 20:01:20 9587 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-169 slot:194 node:10.120.151.105:12402
+2014-12-30 20:01:20 9587 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-170 slot:93 node:10.120.151.105:12302
+2014-12-30 20:01:20 9587 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-171 slot:7 node:10.120.151.105:12302
+2014-12-30 20:01:20 9587 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-172 slot:214 node:10.120.151.105:12402
+2014-12-30 20:01:20 9587 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-173 slot:7 node:10.120.151.105:12302
+2014-12-30 20:01:20 9587 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-174 slot:82 node:10.120.151.105:12302
+2014-12-30 20:01:20 9587 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-175 slot:124 node:10.120.151.105:12302
+2014-12-30 20:01:20 9587 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-176 slot:214 node:10.120.151.105:12402
+2014-12-30 20:01:20 9597 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-177 slot:48 node:10.120.151.105:12302
+2014-12-30 20:01:20 9597 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-178 slot:130 node:10.120.151.105:12402
+2014-12-30 20:01:20 9597 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-179 slot:44 node:10.120.151.105:12302
+2014-12-30 20:01:20 9597 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-180 slot:90 node:10.120.151.105:12302
+2014-12-30 20:01:20 9597 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-181 slot:159 node:10.120.151.105:12402
+2014-12-30 20:01:20 9597 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-182 slot:189 node:10.120.151.105:12402
+2014-12-30 20:01:20 9597 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-183 slot:188 node:10.120.151.105:12402
+2014-12-30 20:01:20 9607 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-184 slot:95 node:10.120.151.105:12302
+2014-12-30 20:01:20 9607 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-185 slot:52 node:10.120.151.105:12302
+2014-12-30 20:01:20 9607 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-186 slot:109 node:10.120.151.105:12302
+2014-12-30 20:01:20 9607 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-187 slot:217 node:10.120.151.105:12402
+2014-12-30 20:01:20 9607 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-188 slot:113 node:10.120.151.105:12302
+2014-12-30 20:01:20 9607 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-189 slot:178 node:10.120.151.105:12402
+2014-12-30 20:01:20 9607 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-190 slot:176 node:10.120.151.105:12402
+2014-12-30 20:01:20 9617 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-191 slot:34 node:10.120.151.105:12302
+2014-12-30 20:01:20 9617 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-192 slot:100 node:10.120.151.105:12302
+2014-12-30 20:01:20 9617 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-193 slot:108 node:10.120.151.105:12302
+2014-12-30 20:01:20 9617 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-194 slot:184 node:10.120.151.105:12402
+2014-12-30 20:01:20 9617 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-195 slot:55 node:10.120.151.105:12302
+2014-12-30 20:01:20 9617 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-196 slot:12 node:10.120.151.105:12302
+2014-12-30 20:01:20 9617 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-197 slot:247 node:10.120.151.105:12402
+2014-12-30 20:01:20 9627 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-198 slot:193 node:10.120.151.105:12402
+2014-12-30 20:01:20 9627 [main] (SimpleSlotInfo.java:21) INFO  - shardingSlot key:test-199 slot:109 node:10.120.151.105:12302
+2014-12-30 20:01:20 9627 [main] (ZooKeeper.java:684) INFO  - Session: 0x114a3825ff2a0051 closed
+2014-12-30 20:01:20 9627 [main-EventThread] (ClientCnxn.java:509) INFO  - EventThread shut down

@@ -20,11 +20,16 @@ public class ClusterJedisTemplateTest {
 		zkhost.add(new HostAndPort("10.120.151.105",10003));
 		JedisPoolConfig config = new JedisPoolConfig();
 		ClusterJedisTemplate template = new ClusterJedisTemplate(config, zkhost, product, password, basePath);
-		template.set("test1", "this is a test");
-		template.lpush("testlist", "534");
-		template.lpush("testlist", "5343");
-		template.lpush("testlist", "22");
-		System.out.println("--------------------");
+		template.setSlotInfo(new SimpleSlotInfo());
+		String keyPrefix = "test-";
+		int index = 100;
+		while(index<200){
+			String key = keyPrefix+index;
+			String value = "this is "+key;
+			template.set(key, value);
+			index++;
+		}
+		System.out.println("----------------------------");
 		template.close();
 	}
 
