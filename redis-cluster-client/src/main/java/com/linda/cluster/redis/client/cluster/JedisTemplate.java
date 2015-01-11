@@ -7,18 +7,17 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import redis.clients.jedis.BinaryClient.LIST_POSITION;
-import redis.clients.jedis.BinaryJedisCommands;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisCommands;
 import redis.clients.jedis.ScanResult;
 import redis.clients.jedis.SortingParams;
 import redis.clients.jedis.Tuple;
 
+import com.linda.cluster.redis.client.JedisClient;
 import com.linda.cluster.redis.client.RedisCallback;
 import com.linda.cluster.redis.client.RedisResult;
 import com.linda.cluster.redis.client.exception.ClusterExceptionHandler;
 
-public abstract class JedisTemplate implements BinaryJedisCommands,JedisCommands{
+public abstract class JedisTemplate implements JedisClient{
 	
 	protected abstract Jedis getResource(final String key);
 	
@@ -27,8 +26,6 @@ public abstract class JedisTemplate implements BinaryJedisCommands,JedisCommands
 	protected abstract void returnBrokenResource(Jedis jedis);
 	
 	protected abstract Jedis getResource(final byte[] key);
-	
-	public abstract void close();
 	
 	private ClusterExceptionHandler exceptionHandler;
 	
