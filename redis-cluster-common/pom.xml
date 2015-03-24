@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
+			<version>1.9.12</version>
 		</dependency>
 
 		<dependency>
@@ -53,7 +53,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.1.37</version>
+			<version>1.1.32</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
